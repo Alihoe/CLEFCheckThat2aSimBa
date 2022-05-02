@@ -98,7 +98,7 @@ if __name__ == '__main__':
     # pre_processor = PreProcessor('cleaning_tweets')
     # pp_training_data = pre_processor.pre_process(training_data, pp_training_data)
     # pp_old_test_data = pre_processor.pre_process(old_test_data, pp_old_test_data)
-    #
+
     # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
     #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number'])
     # fsg.prepare_vclaims(v_claims)
@@ -107,9 +107,9 @@ if __name__ == '__main__':
     # labels = all_training_data_labels
     # featureset_train = fsg.generate_feature_set(pp_training_data, labels)
     #
-    fsg = FeatureSetGenerator(['token_number'])
+    fsg = FeatureSetGenerator(['ne_ne_ratio'])
     fsg.generate_feature_set(pp_old_test_data)
-    fsg.prepare_vclaims(v_claims)
+    #fsg.prepare_vclaims(v_claims)
     #
     # featureset_train = complete_feature_set_triples_train + '.pkl'
     # featureset_test = complete_feature_set_triples_test+'.pkl'

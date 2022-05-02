@@ -44,7 +44,7 @@ class ListEntitySimComputer:
             b_set.remove('not available')
         union = a_set | b_set
         conj = a_set & b_set
-        if len(union == 0):
+        if len(union) == 0:
             sim = 0
         else:
             sim = (100/len(union))*len(conj)

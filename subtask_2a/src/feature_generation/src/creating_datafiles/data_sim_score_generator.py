@@ -148,11 +148,11 @@ class SimilarityScoreDataGenerator:
             input_claims_df = pd.read_pickle(input_claims)
             ver_claims_df = pd.read_pickle(ver_claims)
             input_claims_col = input_claims_df.columns
-            input_claim_ids = input_claims_df[[input_claims_col[0]]].values[1:]
+            input_claim_ids = input_claims_df[[input_claims_col[0]]].values
             ver_claims_col = ver_claims_df.columns
             ver_claim_ids = ver_claims_df[[ver_claims_col[0]]].values.tolist()
             sim_score_df = pd.DataFrame(columns=['i_claim_id', 'ver_claim_id', 'sim_score'])
-            input_claim_token_numbers = input_claims_df[[input_claims_col[1]]].values[1:]
+            input_claim_token_numbers = input_claims_df[[input_claims_col[1]]].values
             ver_claim_token_numbers = np.array(ver_claims_df[[ver_claims_col[1]]].values)
             nrows = ver_claims_df[[ver_claims_col[1]]].shape[0]
             for i in range(len(input_claim_ids)):
