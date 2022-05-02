@@ -1,0 +1,298 @@
+*.idea
+profiles_settings.xml
+vcs.xml
+workspace.xml
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test.tsv / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# PyCharms
+.idea/
+
+infersent1.pkl
+infersent2.pkl
+crawl-300d-2M.vec
+glove.840B.300d.txt
+
+infersent_encodings_vclaims_pp1.pkl
+sbert_encodings_vclaims_pp1.tsv
+universal_encodings_vclaims_pp1.tsv
+
+infersent_sims_test_pp1.pkl
+infersent_sims_test_pp1.tsv
+jacc_chars_test_pp1.pkl
+jacc_chars_test_pp1.tsv
+jacc_tokens_test_pp1.pkl
+jacc_tokens_test_pp1.tsv
+levenshtein_test_pp1.pkl
+levenshtein_test_pp1.tsv
+main_syms_sims_test_pp1.pkl
+main_syms_sims_test_pp1.tsv
+ne_sims_test_pp1.pkl
+ne_sims_test_pp1.tsv
+sbert_sims_test_pp1.pkl
+sbert_sims_test_pp1.tsv
+seq_match_test_pp1.pkl
+seq_match_test_pp1.tsv
+sim_cse_sims_test_pp1.pkl
+sim_cse_sims_test_pp1.tsv
+subjects_sims_test_pp1.pkl
+subjects_sims_test_pp1.tsv
+universal_sims_test_pp1.pkl
+universal_sims_test_pp1.tsv
+words_sims_test_pp1.pkl
+words_sims_test_pp1.tsv
+top_n_infersent_sims_test_pp1_50.pkl
+top_n_infersent_sims_test_pp1_50.tsv
+top_n_sbert_sims_test_pp1_50.pkl
+top_n_sbert_sims_test_pp1_50.tsv
+top_n_sim_cse_sims_test_pp1_50.pkl
+top_n_sim_cse_sims_test_pp1_50.tsv
+top_n_universal_sims_test_pp1_50.pkl
+top_n_universal_sims_test_pp1_50.tsv
+
+sbert_sims_train_pp1.pkl
+sbert_sims_train_pp1.tsv
+infersent_sims_train_pp1.pkl
+infersent_sims_train_pp1.tsv
+sim_cse_sims_train_pp1.pkl
+sim_cse_sims_train_pp1.tsv
+universal_sims_train_pp1.pkl
+universal_sims_train_pp1.tsv
+ne_sims_train_pp1.pkl
+ne_sims_train_pp1.tsv
+main_syms_sims_train_pp1.pkl
+main_syms_sims_train_pp1.tsv
+jacc_chars_train_pp1.pkl
+jacc_chars_train_pp1.tsv
+jacc_tokens_train_pp1.pkl
+jacc_tokens_train_pp1.tsv
+levenshtein_train_pp1.pkl
+levenshtein_train_pp1.tsv
+seq_match_train_pp1.pkl
+seq_match_train_pp1.tsv
+subjects_sims_train_pp1.pkl
+subjects_sims_train_pp1.tsv
+words_sims_train_pp1.pkl
+words_sims_train_pp1.tsv
+top_n_infersent_sims_train_pp1_50.pkl
+top_n_infersent_sims_train_pp1_50.tsv
+top_n_sbert_sims_train_pp1_50.pkl
+top_n_sbert_sims_train_pp1_50.tsv
+top_n_sim_cse_sims_train_pp1_50.pkl
+top_n_sim_cse_sims_train_pp1_50.tsv
+top_n_universal_sims_train_pp1_50.pkl
+top_n_universal_sims_train_pp1_50.tsv
+
+test_first_eight_features.pkl
+test_first_eleven_features.pkl
+test_first_five_features.pkl
+test_first_nine_features.pkl
+test_first_seven_features.pkl
+test_first_six_features.pkl
+test_first_ten_features.pkl
+test_sbert_infersent_disjunction.pkl
+test_sbert_infersent_universal_disjunction.pkl
+test_sbert_infersent_universal_sim_cse_disjunction.pkl
+test_sbert_infersent_universal_sim_cse_disjunction.tsv
+complete_feature_set_pairs_test_pp1.pkl
+complete_feature_set_pairs_test_pp1.tsv
+complete_feature_set_triples_test_pp1.pkl
+complete_feature_set_triples_test_pp1.tsv
+
+train_first_eight_features.pkl
+train_first_eleven_features.pkl
+train_first_five_features.pkl
+train_first_nine_features.pkl
+train_first_seven_features.pkl
+train_first_six_features.pkl
+train_first_ten_features.pkl
+train_first_twelve_features.pkl
+train_first_twelve_features.tsv
+train_sbert_infersent_disjunction.pkl
+train_sbert_infersent_universal_disjunction.pkl
+train_sbert_infersent_universal_sim_cse_disjunction.pkl
+train_sbert_infersent_universal_sim_cse_disjunction.tsv
+complete_feature_set_pairs_train_pp1.pkl
+complete_feature_set_pairs_train_pp1.tsv
+complete_feature_set_triples_train_pp1.pkl
+complete_feature_set_triples_train_pp1.tsv
+
+infersent_sims_test_TEST.pkl
+infersent_sims_test_TEST.tsv
+jacc_chars_test_TEST.pkl
+jacc_chars_test_TEST.tsv
+jacc_tokens_test_TEST.pkl
+jacc_tokens_test_TEST.tsv
+levenshtein_test_TEST.pkl
+levenshtein_test_TEST.tsv
+main_syms_sims_test_TEST.pkl
+main_syms_sims_test_TEST.tsv
+ne_sims_test_TEST.pkl
+ne_sims_test_TEST.tsv
+sbert_sims_test_TEST.pkl
+sbert_sims_test_TEST.tsv
+seq_match_test_TEST.pkl
+seq_match_test_TEST.tsv
+sim_cse_sims_test_TEST.pkl
+sim_cse_sims_test_TEST.tsv
+subjects_sims_test_TEST.pkl
+subjects_sims_test_TEST.tsv
+universal_sims_test_TEST.pkl
+universal_sims_test_TEST.tsv
+words_sims_test_TEST.pkl
+words_sims_test_TEST.tsv
+
+top_n_sbert_sims_test_TEST_50.pkl
+top_n_sbert_sims_test_TEST_50.tsv
+top_n_sim_cse_sims_test_TEST_50.pkl
+top_n_sim_cse_sims_test_TEST_50.tsv
+top_n_universal_sims_test_TEST_50.pkl
+top_n_universal_sims_test_TEST_50.tsv
+
+test_first_eight_features_TEST.pkl
+test_first_eleven_features_TEST.pkl
+test_first_five_features_TEST.pkl
+test_first_nine_features_TEST.pkl
+test_first_seven_features_TEST.pkl
+test_first_six_features_TEST.pkl
+test_first_ten_features_TEST.pkl
+test_sbert_infersent_disjunction_TEST.pkl
+test_sbert_infersent_universal_disjunction_TEST.pkl
+test_sbert_infersent_universal_sim_cse_disjunction_TEST.pkl
+test_sbert_infersent_universal_sim_cse_disjunction_TEST.tsv
+
+complete_feature_set_pairs_test_TEST.pkl
+complete_feature_set_pairs_test_TEST.tsv
+complete_feature_set_triples_test_TEST.pkl
+complete_feature_set_triples_test_TEST.tsv
+
+token_number_sims_test_pp1.pkl
+token_number_sims_test_pp1.tsv
+

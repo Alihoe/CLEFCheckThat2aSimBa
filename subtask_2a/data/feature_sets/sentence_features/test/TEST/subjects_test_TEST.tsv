@@ -1,0 +1,210 @@
+,input_claim_ids,pos
+0,tweet-sno-1198,['aide']
+1,tweet-sno-1199,['service']
+2,tweet-sno-1200,[]
+3,tweet-sno-1201,['elonmusk']
+4,tweet-sno-1202,"['it', 'un', 'kremlin', 'i', 'they']"
+5,tweet-sno-1203,['monicacrowley']
+6,tweet-sno-1204,['vixen']
+7,tweet-sno-1205,"['artwork', 'i', 'it', 'me', 'image', 'i', 'russia', 'i', 'cover']"
+8,tweet-sno-1206,"['someone', 'i', 'family', 'president', 'i']"
+9,tweet-sno-1207,"['cdc', 'children', 'cdc']"
+10,tweet-sno-1208,['putin']
+11,tweet-sno-1209,"['goal', 'tsar', 'you', 'i', '’ve']"
+12,tweet-sno-1210,"['zuckerberg', 'you', 'russia', 'we', 'tanks']"
+13,tweet-sno-1211,['we']
+14,tweet-sno-1212,"['i', 'much']"
+15,tweet-sno-1213,"['tv', 'they', 'that', 'ukraine', 'it', 'it', 'it']"
+16,tweet-sno-1214,['rt']
+17,tweet-sno-1215,"['who', 'ww2']"
+18,tweet-sno-1216,"['fans', 'game']"
+19,tweet-sno-1217,[]
+20,tweet-sno-1218,[]
+21,tweet-sno-1219,"['ingraham', 'trump', 'you', 'you', 'they', 'that', 'ingraham']"
+22,tweet-sno-1220,"['you', 'we']"
+23,tweet-sno-1221,['pharrell']
+24,tweet-sno-1222,['babies']
+25,tweet-sno-1223,"['lobster', 'jessekellydc', 'award', 'ya']"
+26,tweet-sno-1224,"['trump', 'this', 'everyone']"
+27,tweet-sno-1225,['nfl']
+28,tweet-sno-1226,"['nfl', 'he', 'they', 'he']"
+29,tweet-sno-1227,[]
+30,tweet-sno-1228,"['manufacturers', 'i', 'it']"
+31,tweet-sno-1229,[]
+32,tweet-sno-1230,"['he', 'it']"
+33,tweet-sno-1231,"['what', 'someone']"
+34,tweet-sno-1232,"['somebody', 'that', 'arizona', 'it', 'that', 'it', 'that']"
+35,tweet-sno-1233,"['people', 'i']"
+36,tweet-sno-1234,[]
+37,tweet-sno-1235,"['we', 'we', 'we']"
+38,tweet-sno-1236,"['reporters', 'q', 'he', 'doocy', 'you', 'inflation', 'biden', 'it']"
+39,tweet-sno-1237,['people']
+40,tweet-sno-1238,"['everyone', 'news', 'you', 'you', 'you', 'you', 'potential']"
+41,tweet-sno-1239,"['rock', 'it', 'it']"
+42,tweet-sno-1240,[]
+43,tweet-sno-1241,['tax']
+44,tweet-sno-1242,"['curriculum', 'solution', 'story']"
+45,tweet-sno-1243,"['curriculum', 'students', 'students']"
+46,tweet-sno-1244,"['chair', 'all', 'i', 'overstating""—i\'m']"
+47,tweet-sno-1245,"['hamburgers', 'i', 'ham', 'it', 'it', 'i', 'jamie']"
+48,tweet-sno-1246,"['king', 'technology', 'politicians']"
+49,tweet-sno-1247,"['gorsuch', 'he', 'i', 'you']"
+50,tweet-sno-1248,['federer']
+51,tweet-sno-1249,"['it', 'anybody', 'kids']"
+52,tweet-sno-1250,"['director', '%', 'biden']"
+53,tweet-sno-1251,['woodward']
+54,tweet-sno-1252,['china']
+55,tweet-sno-1253,['bowie']
+56,tweet-sno-1254,['pence']
+57,tweet-sno-1255,['protest']
+58,tweet-sno-1256,"['piacesi', 'biden', 'she', 'maria']"
+59,tweet-sno-1257,"['color', 'it', 'they', 'one']"
+60,tweet-sno-1258,"['nasa', 'world', 'we', 'i', 'subplot']"
+61,tweet-sno-1259,['szn']
+62,tweet-sno-1260,['day']
+63,tweet-sno-1261,"['vaccine', 'vaccines', 'vaccines', 'you', 'people', 'they']"
+64,tweet-sno-1262,"['clip', 'spokesperson', 'it', 'he', 'it', 'interpretation']"
+65,tweet-sno-1263,"['rhetoric', 'watters', 'you', 'he', 'it']"
+66,tweet-sno-1264,"['watters', 'you', 'he', 'it', 'who', 'as*hole']"
+67,tweet-sno-1265,"['address', 'bag']"
+68,tweet-sno-1266,"['everyone', 'who', 'who']"
+69,tweet-sno-1267,"['culkin', 'who']"
+70,tweet-sno-1268,"['bourla', 'that']"
+71,tweet-sno-1269,"['shelf', 'you', 'we']"
+72,tweet-sno-1270,['biden']
+73,tweet-sno-1271,"['i', 'who']"
+74,tweet-sno-1272,[]
+75,tweet-sno-1273,['ceo']
+76,tweet-sno-1274,"['plenty', 'one']"
+77,tweet-sno-1275,['photo']
+78,tweet-sno-1276,[]
+79,tweet-sno-1277,['we']
+80,tweet-sno-1278,[]
+81,tweet-sno-1279,"['that', 'virus', 'jab', 'you', 'u']"
+82,tweet-sno-1280,"['i', 'the']"
+83,tweet-sno-1281,['view']
+84,tweet-sno-1282,"['i', 'it']"
+85,tweet-sno-1283,['group']
+86,tweet-sno-1284,['biden']
+87,tweet-sno-1285,"['llc', 'they']"
+88,tweet-sno-1286,"['nasa', 'they']"
+89,tweet-sno-1287,['kreme']
+90,tweet-sno-1288,"['cdc', 'number', 'pandemic']"
+91,tweet-sno-1289,[]
+92,tweet-sno-1290,['simpsons']
+93,tweet-sno-1291,[]
+94,tweet-sno-1292,"['chrome', 'you', 'video', 'you', 'you']"
+95,tweet-sno-1293,['ap']
+96,tweet-sno-1294,"['what', 'you']"
+97,tweet-sno-1295,[]
+98,tweet-sno-1296,"['time', 'ozaki']"
+99,tweet-sno-1297,"['agency', 'experiment']"
+100,tweet-sno-1298,"['i', 'who', 'this', 'what']"
+101,tweet-sno-1299,"['bullpen', 'it', 'we']"
+102,tweet-sno-1300,"['people', 'who', 'people', 'caravans', 'we']"
+103,tweet-sno-1301,"['kardashian', 'source']"
+104,tweet-sno-1302,"['i', 'amctheatres', 'english']"
+105,tweet-sno-1303,"['nih', 'nih', 'ecohealth', 'peterdaszak']"
+106,tweet-sno-1304,"['people', 'regret']"
+107,tweet-sno-1305,"['pelosi', 'irs', 'people', 'people']"
+108,tweet-sno-1306,"['map', 'it', 'tweet']"
+109,tweet-sno-1307,[]
+110,tweet-sno-1308,"['this', 'columbus', 'day']"
+111,tweet-sno-1309,"['planetarydefense', 'we', 'dartmission']"
+112,tweet-sno-1310,['dartmission']
+113,tweet-sno-1311,"['langone', 'we']"
+114,tweet-sno-1312,"['skittles', 'you', 'they']"
+115,tweet-sno-1313,"['they’re', 'i']"
+116,tweet-sno-1314,['theyre']
+117,tweet-sno-1315,"['chief', 'we', 'we', 'bukholm']"
+118,tweet-sno-1316,"['plant', 'it']"
+119,tweet-sno-1317,"['military', 'photos']"
+120,tweet-sno-1318,['nanobot']
+121,tweet-sno-1319,"['we', 'we', 'we']"
+122,tweet-sno-1320,['staff']
+123,tweet-sno-1321,['this']
+124,tweet-sno-1322,"['you', 'you', 'someone']"
+125,tweet-sno-1323,['derulo']
+126,tweet-sno-1324,"['raducanu', 'she', 'she', 'i', 'i']"
+127,tweet-sno-1325,"['moment', 'raducanu']"
+128,tweet-sno-1326,"['tyra', 'she', 'y’', 'i', 'we', 'night']"
+129,tweet-sno-1327,"['you', 'alert']"
+130,tweet-sno-1328,"['ivermectin', 'that']"
+131,tweet-sno-1329,"['ivermectin', 'results', 'anybody', 'this']"
+132,tweet-sno-1330,"['we', 'lives', 'we', 'hate', 'battle', 'we']"
+133,tweet-sno-1331,"['supremacist', 'memories', 'we', 'we']"
+134,tweet-sno-1332,"['people', 'i', 'captain', 'he', 'it']"
+135,tweet-sno-1333,['nygovcuomo']
+136,tweet-sno-1334,['wall']
+137,tweet-sno-1335,[]
+138,tweet-sno-1336,"['list', 'all', '73']"
+139,tweet-sno-1337,['man']
+140,tweet-sno-1338,['biden']
+141,tweet-sno-1339,"['agency', 'agency', 'biden', 'bennett']"
+142,tweet-sno-1340,"['footage', 'they', 'biden', 'vid']"
+143,tweet-sno-1341,"['biden', 'which']"
+144,tweet-sno-1342,['i']
+145,tweet-sno-1343,"['voices', 'we', 'onlyfans', 'we']"
+146,tweet-sno-1344,"['report', 'it', 'they', 'they']"
+147,tweet-sno-1345,['taliban']
+148,tweet-sno-1346,"['the', 'taliban', 'effort']"
+149,tweet-sno-1347,"['sites', 'it']"
+150,tweet-sno-1348,"['biden', 'which']"
+151,tweet-sno-1349,"['attendant', 'that', 'duct', 'rivera', 'guy', 'he']"
+152,tweet-sno-1350,"['passenger', 'parents', 'frontier', 'they', 'berry']"
+153,tweet-sno-1351,"['doubles', 'part']"
+154,tweet-sno-1352,"['member', 'who']"
+155,tweet-sno-1353,['landing']
+156,tweet-sno-1354,['families']
+157,tweet-sno-1355,['officers']
+158,tweet-sno-1356,"['module', 'teams', 'systems', 'crew']"
+159,tweet-sno-1357,"['i', 'retreiver']"
+160,tweet-sno-1358,"['biden', 'who', 'he']"
+161,tweet-sno-1359,['he']
+162,tweet-sno-1360,"['strug', 'she', 'it', 'usa', 'usa', 'ones']"
+163,tweet-sno-1361,['west']
+164,tweet-sno-1362,"['you', 'capitol', 'day?why', 'here?why', 'we', 'it']"
+165,tweet-sno-1363,"['reporter', 'he']"
+166,tweet-sno-1364,['dunes']
+167,tweet-sno-1365,[]
+168,tweet-sno-1366,"['i', 'i', 'it', 'they']"
+169,tweet-sno-1367,"['he', 'you', 'he']"
+170,tweet-sno-1368,"['some', 'we', 'you', 'we', 'downvotes']"
+171,tweet-sno-1369,"['i', 'we']"
+172,tweet-sno-1370,"['cops', 'you', 'you']"
+173,tweet-sno-1371,[]
+174,tweet-sno-1372,"['i', 'percent', 'we']"
+175,tweet-sno-1373,[]
+176,tweet-sno-1374,"['that', 'it', 'law', 'we', 'it', 'it', 'barbers', 'they']"
+177,tweet-sno-1375,"['you', 'we']"
+178,tweet-sno-1376,"['this', 'i']"
+179,tweet-sno-1377,"['proof', 'tuckercarlsonfoxnews', 'tucker', 'i', 'he']"
+180,tweet-sno-1378,"['embassy', 'states', 'rights']"
+181,tweet-sno-1379,['odni']
+182,tweet-sno-1380,"['claim', 'boebert', 'boebert', 'money']"
+183,tweet-sno-1381,"['madonna', 'we']"
+184,tweet-sno-1382,"['show', 'i']"
+185,tweet-sno-1383,[]
+186,tweet-sno-1384,"['potus', 'he', 'kids', 'he']"
+187,tweet-sno-1385,"['i', 'i', 'i', 'rudd', 'he', 'me', 'him', 'i', 'i', 'paul']"
+188,tweet-sno-1386,"['realbdw', 'contact']"
+189,tweet-sno-1387,"['one', 'players', 'players']"
+190,tweet-sno-1388,"['lobby', 'michaels']"
+191,tweet-sno-1389,"['i', 'which', 'america']"
+192,tweet-sno-1390,"['page', 'bostonglobe']"
+193,tweet-sno-1391,[]
+194,tweet-sno-1392,"['man', 'you', 'creepbag', 'you', 'lee']"
+195,tweet-sno-1393,"['billcosby', 'he', 'world', 'you']"
+196,tweet-sno-1394,"['we', 'option']"
+197,tweet-sno-1395,[]
+198,tweet-sno-1396,"['i', 'ukrainian']"
+199,tweet-sno-1397,"['teams', 'it', 'uniform', 'that']"
+200,tweet-sno-1398,"['gates', 'code']"
+201,tweet-sno-1399,"['tucker', 'he']"
+202,tweet-sno-1400,"['i', 'he', 'right']"
+203,tweet-sno-1401,"['i', 'that', 'that', 'it', 'them', 'fox', 'pence']"
+204,tweet-sno-1402,"['cent', 'it', 'that', 'company']"
+205,tweet-sno-1403,"['turtle', 'i', 'confusion', 'folks', 'shell']"
+206,tweet-sno-1404,['some']
+207,tweet-sno-1405,"['take', 'it']"
+208,tweet-sno-1406,"['joon', 'he', 'filming', 'utopia']"
