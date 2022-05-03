@@ -55,7 +55,7 @@ class UnsupervisedFeatureSetGenerator:
                 print(sim_score)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.universal.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = universal_sims_test_pp1
@@ -68,7 +68,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.sim_cse.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = sim_cse_sims_test_pp1
@@ -81,7 +81,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.seq_match.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = seq_match_test_pp1
@@ -95,7 +95,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.jacc_chars.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = jacc_chars_test_pp1
@@ -109,7 +109,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.jacc_tokens.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = jacc_tokens_test_pp1
@@ -123,7 +123,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.subjects.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = subjects_test_pp1
@@ -137,7 +137,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.levenshtein.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = levenshtein_test_pp1
@@ -151,7 +151,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.ne_ne_ratio.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = ne_ne_ratio_sims_test_pp1
@@ -164,7 +164,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.ne_token_ratio.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = ne_token_ratio_sims_test_pp1
@@ -177,7 +177,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.main_syms_ratio.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = main_syms_ratio_sims_test_pp1
@@ -190,7 +190,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         if Features.words_ratio.name in self.features:
             if self.data == Data.pp1.name:
                 sim_score_file = words_ratio_sims_test_pp1
@@ -203,7 +203,7 @@ class UnsupervisedFeatureSetGenerator:
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
             else:
                 sim_score = current_feature
-        output_df['sim_score'] = sim_score
+            output_df['sim_score'] = sim_score
         output_df['i_claim_id'] = sim_score_df['i_claim_id']
         output_df['ver_claim_id'] = sim_score_df['ver_claim_id']
         output_df['QO'] = 'QO'
