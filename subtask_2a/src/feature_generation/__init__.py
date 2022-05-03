@@ -17,8 +17,10 @@ class Features(enum.Enum):
     token_number = 13
     ne_ne_ratio = 14
     ne_token_ratio = 15
-    main_syms_token_ratio = 16
-    words_token_ratio = 17
+    main_syms_ratio = 16
+    main_syms_token_ratio = 17
+    words_ratio = 18
+    words_token_ratio = 19
 
 
 v_claims_directory = 'data/vclaims'
@@ -205,11 +207,17 @@ ne_ne_ratio_sims_training_pp1_tsv = 'data/feature_sets/sentence_similarities/tra
 ne_token_ratio_sims_training_pp1 = 'data/feature_sets/sentence_similarities/training/pp1/ne_token_ratio_training_pp1.pkl'
 ne_token_ratio_sims_training_pp1_tsv = 'data/feature_sets/sentence_similarities/training/pp1/ne_token_ratio_training_pp1.tsv'
 # Feature 16
+main_syms_ratio_sims_training_pp1 = 'data/feature_sets/sentence_similarities/training/pp1/main_syms_ratio_training_pp1.pkl'
+main_syms_ratio_sims_training_pp1_tsv = 'data/feature_sets/sentence_similarities/training/pp1/main_syms_ratio_training_pp1.tsv'
+# Feature 17
 main_syms_token_ratio_sims_training_pp1 = 'data/feature_sets/sentence_similarities/training/pp1/main_syms_token_ratio_training_pp1.pkl'
 main_syms_token_ratio_sims_training_pp1_tsv = 'data/feature_sets/sentence_similarities/training/pp1/main_syms_token_ratio_training_pp1.tsv'
-# Feature 17
-words_token_ratio_sims_pp1 = 'data/feature_sets/sentence_similarities/training/pp1/words_token_ratio_training_pp1.pkl'
-words_token_ratio_sims_pp1_tsv = 'data/feature_sets/sentence_similarities/training/pp1/words_token_ratio_training_pp1.tsv'
+# Feature 18
+words_ratio_sims_training_pp1 = 'data/feature_sets/sentence_similarities/training/pp1/words_ratio_training_pp1.pkl'
+words_ratio_sims_training_pp1_tsv = 'data/feature_sets/sentence_similarities/training/pp1/words_ratio_training_pp1.tsv'
+# Feature 19
+words_token_ratio_sims_training_pp1 = 'data/feature_sets/sentence_similarities/training/pp1/words_token_ratio_training_pp1.pkl'
+words_token_ratio_sims_training_pp1_tsv = 'data/feature_sets/sentence_similarities/training/pp1/words_token_ratio_training_pp1.tsv'
 
 # Test
 
@@ -271,11 +279,17 @@ ne_ne_ratio_sims_test_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp
 ne_token_ratio_sims_test_pp1 = 'data/feature_sets/sentence_similarities/test/pp1/ne_token_ratio_test_pp1.pkl'
 ne_token_ratio_sims_test_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp1/ne_token_ratio_test_pp1.tsv'
 # Feature 16
+main_syms_ratio_sims_test_pp1 = 'data/feature_sets/sentence_similarities/test/pp1/main_syms_ratio_test_pp1.pkl'
+main_syms_ratio_sims_test_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp1/main_syms_ratio_test_pp1.tsv'
+# Feature 17
 main_syms_token_ratio_sims_test_pp1 = 'data/feature_sets/sentence_similarities/test/pp1/main_syms_token_ratio_test_pp1.pkl'
 main_syms_token_ratio_sims_test_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp1/main_syms_token_ratio_test_pp1.tsv'
-# Feature 17
-words_token_ratio_sims_pp1 = 'data/feature_sets/sentence_similarities/test/pp1/words_token_ratio_test_pp1.pkl'
-words_token_ratio_sims_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp1/words_token_ratio_test_pp1.tsv'
+# Feature 18
+words_ratio_sims_test_pp1 = 'data/feature_sets/sentence_similarities/test/pp1/words_ratio_test_pp1.pkl'
+words_ratio_sims_test_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp1/words_ratio_test_pp1.tsv'
+# Feature 19
+words_token_ratio_sims_test_pp1 = 'data/feature_sets/sentence_similarities/test/pp1/words_token_ratio_test_pp1.pkl'
+words_token_ratio_sims_test_pp1_tsv = 'data/feature_sets/sentence_similarities/test/pp1/words_token_ratio_test_pp1.tsv'
 
 # Combined sentence embedding similarities
 

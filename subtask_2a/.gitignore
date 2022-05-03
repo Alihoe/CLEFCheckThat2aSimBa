@@ -295,4 +295,12 @@ complete_feature_set_triples_test_TEST.tsv
 
 token_number_sims_test_pp1.pkl
 token_number_sims_test_pp1.tsv
+main_syms_ratio_test_pp1.pkl
+main_syms_ratio_test_pp1.tsv
+ne_ne_ratio_test_pp1.pkl
+ne_ne_ratio_test_pp1.tsv
+ne_token_ratio_test_pp1.pkl
+ne_token_ratio_test_pp1.tsv
+words_ratio_test_pp1.pkl
+words_ratio_test_pp1.tsv
 

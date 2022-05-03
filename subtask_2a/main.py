@@ -4,6 +4,7 @@ from src.feature_generation import complete_feature_set_triples_train, complete_
 from src.feature_generation.feature_set_generator import FeatureSetGenerator
 from src.feature_generation.file_paths.TEST.TEST_file_names import complete_feature_set_pairs_test_TEST, \
     complete_feature_set_triples_test_TEST
+from src.feature_generation.unsupervised_feature_set_generator import UnsupervisedFeatureSetGenerator
 from src.pre_processing import test_data
 from src.pre_processing.pre_processor import PreProcessor
 from src.prediction.feature_selector import FeatureSelector
@@ -54,22 +55,6 @@ if __name__ == '__main__':
     # FeatureSelector.feature_correlation(complete_feature_set_pairs_train, feature_correlation_training_data_spearman)
     # FeatureSelector.mutual_information_feature_selection(complete_feature_set_pairs_train)
 
-    top_5_sim_cse = 'data/unsupervised_ranking/pp1/top_5_sim_cse.tsv'
-    top_5_sbert = 'data/unsupervised_ranking/pp1/top_5_sbert.tsv'
-    top_5_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok.tsv'
-    top_5_sim_cse_jacc_tok_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_words.tsv'
-    top_5_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_words.tsv'
-    top_5_sim_cse_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_ne.tsv'
-    top_5_sim_cse_jacc_tok_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_ne.tsv'
-    top_5_all_features = 'data/unsupervised_ranking/pp1/top_5_all_features.tsv'
-    top_5_all_features_without_infersent = 'data/unsupervised_ranking/pp1/top_5_all_features_without_infersent.tsv'
-    top_5_sim_cse = 'data/unsupervised_ranking/pp1/top_5_all_features_without_infersent.tsv'
-    top_5_no_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_no_sentence_embeddings.tsv'
-    top_5_sbert_universal_sim_cse_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_features.tsv'
-    top_5_sbert_universal_sim_cse_ne_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_features.tsv'
-    top_5_sbert_universal_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_jacc_tok.tsv'
-
-
     # ranker = UnsupervisedRanker(['sbert', 'infersent', 'universal', 'sim_cse', 'sequence_matcher', 'levenshtein', 'jacc_char', 'jacc_tok', 'ne', 'main_syns', 'words', 'subjects'])
     # ranker.create_top_n_output_file(complete_feature_set_pairs_test, old_test_data, top_5_all_features)
     # evaluate_CLEF(old_test_data_labels,  top_5_all_features)
@@ -107,8 +92,53 @@ if __name__ == '__main__':
     # labels = all_training_data_labels
     # featureset_train = fsg.generate_feature_set(pp_training_data, labels)
     #
-    fsg = FeatureSetGenerator(['ne_ne_ratio'])
-    fsg.generate_feature_set(pp_old_test_data)
+    # fsg = FeatureSetGenerator(['main_syms_ratio', 'words_ratio'])
+    # fsg.generate_feature_set(pp_old_test_data)
+
+    top_5_sim_cse = 'data/unsupervised_ranking/pp1/top_5_sim_cse.tsv'
+    top_5_sbert = 'data/unsupervised_ranking/pp1/top_5_sbert.tsv'
+    top_5_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok.tsv'
+    top_5_sim_cse_jacc_tok_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_words.tsv'
+    top_5_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_words.tsv'
+    top_5_sim_cse_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_ne.tsv'
+    top_5_sim_cse_jacc_tok_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_ne.tsv'
+    top_5_all_features = 'data/unsupervised_ranking/pp1/top_5_all_features.tsv'
+    top_5_all_features_without_infersent = 'data/unsupervised_ranking/pp1/top_5_all_features_without_infersent.tsv'
+    top_5_sim_cse = 'data/unsupervised_ranking/pp1/top_5_all_features_without_infersent.tsv'
+    top_5_no_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_no_sentence_embeddings.tsv'
+    top_5_sbert_universal_sim_cse_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_features.tsv'
+    top_5_sbert_universal_sim_cse_ne_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_features.tsv'
+    top_5_sbert_universal_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_jacc_tok.tsv'
+    top_5_all_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_all_sentence_embeddings.tsv'
+    top_5_sbert_universal_sim_cse_ne_ne_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_ne_ratio_features.tsv'
+    top_5_sbert_universal_sim_cse_ne_token_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_token_ratio_features.tsv'
+    top_5_sbert_universal_sim_cse_main_syms_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_main_syms_ratio_features.tsv'
+    top_5_sbert_universal_sim_cse_words_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_words_ratio_features.tsv'
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse'], 'pp1')
+    # ufsg.create_top_n_output_file(old_test_data, top_5_all_sentence_embeddings, n=5)
+    # evaluate_CLEF(old_test_data_labels, top_5_all_sentence_embeddings) #0.9091
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'pp1')
+    # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_features, n=5)
+    # evaluate_CLEF(old_test_data_labels, top_5_sbert_universal_sim_cse_features) # 0.9217
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'ne_ne_ratio'], 'pp1')
+    # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_ne_ne_ratio, n=5)
+    # evaluate_CLEF(old_test_data_labels, top_5_sbert_universal_sim_cse_ne_ne_ratio) # 0.6899
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'ne_token_ratio'], 'pp1')
+    # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_ne_token_ratio, n=5)
+    # evaluate_CLEF(old_test_data_labels, top_5_sbert_universal_sim_cse_ne_token_ratio) #  0.8915
+
+    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'main_syms_ratio'], 'pp1')
+    ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_main_syms_ratio, n=5)
+    evaluate_CLEF(old_test_data_labels, top_5_sbert_universal_sim_cse_main_syms_ratio) # 0.7368
+
+    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'words_ratio'], 'pp1')
+    ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_words_ratio, n=5)
+    evaluate_CLEF(old_test_data_labels, top_5_sbert_universal_sim_cse_words_ratio) # 0.8962
+
     #fsg.prepare_vclaims(v_claims)
     #
     # featureset_train = complete_feature_set_triples_train + '.pkl'

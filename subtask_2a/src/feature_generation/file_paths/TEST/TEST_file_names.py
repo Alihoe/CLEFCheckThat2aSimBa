@@ -175,14 +175,20 @@ token_number_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/t
 ne_ne_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/ne_ne_ratio_training_TEST.pkl'
 ne_ne_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/ne_ne_ratio_training_TEST.tsv'
 # Feature 15
-ne_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_training_TEST.pkl'
-ne_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_training_TEST.tsv'
+ne_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_TEST_TEST.pkl'
+ne_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_TEST_TEST.tsv'
 # Feature 16
-main_syms_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_training_TEST.pkl'
-main_syms_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_training_TEST.tsv'
+main_syms_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_ratio_TEST_TEST.pkl'
+main_syms_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_ratio_TEST_TEST.tsv'
 # Feature 17
-words_token_ratio_sims_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_training_TEST.pkl'
-words_token_ratio_sims_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_training_TEST.tsv'
+main_syms_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_TEST_TEST.pkl'
+main_syms_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_TEST_TEST.tsv'
+# Feature 18
+words_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_ratio_TEST_TEST.pkl'
+words_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_ratio_TEST_TEST.tsv'
+# Feature 19
+words_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_TEST_TEST.pkl'
+words_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_TEST_TEST.tsv'
 
 
 # Test
@@ -245,11 +251,17 @@ ne_ne_ratio_sims_test_TEST_tsv = 'data/feature_sets/sentence_similarities/test/T
 ne_token_ratio_sims_test_TEST = 'data/feature_sets/sentence_similarities/test/TEST/ne_token_ratio_test_TEST.pkl'
 ne_token_ratio_sims_test_TEST_tsv = 'data/feature_sets/sentence_similarities/test/TEST/ne_token_ratio_test_TEST.tsv'
 # Feature 16
+main_syms_ratio_sims_test_TEST = 'data/feature_sets/sentence_similarities/test/TEST/main_syms_ratio_test_TEST.pkl'
+main_syms_ratio_sims_test_TEST_tsv = 'data/feature_sets/sentence_similarities/test/TEST/main_syms_ratio_test_TEST.tsv'
+# Feature 17
 main_syms_token_ratio_sims_test_TEST = 'data/feature_sets/sentence_similarities/test/TEST/main_syms_token_ratio_test_TEST.pkl'
 main_syms_token_ratio_sims_test_TEST_tsv = 'data/feature_sets/sentence_similarities/test/TEST/main_syms_token_ratio_test_TEST.tsv'
-# Feature 17
-words_token_ratio_sims_TEST = 'data/feature_sets/sentence_similarities/test/TEST/words_token_ratio_test_TEST.pkl'
-words_token_ratio_sims_TEST_tsv = 'data/feature_sets/sentence_similarities/test/TEST/words_token_ratio_test_TEST.tsv'
+# Feature 18
+words_ratio_sims_test_TEST = 'data/feature_sets/sentence_similarities/test/TEST/words_ratio_test_TEST.pkl'
+words_ratio_sims_test_TEST_tsv = 'data/feature_sets/sentence_similarities/test/TEST/words_ratio_test_TEST.tsv'
+# Feature 19
+words_token_ratio_sims_test_TEST = 'data/feature_sets/sentence_similarities/test/TEST/words_token_ratio_test_TEST.pkl'
+words_token_ratio_sims_test_TEST_tsv = 'data/feature_sets/sentence_similarities/test/TEST/words_token_ratio_test_TEST.tsv'
 
 # Combined sentence embedding similarities
 

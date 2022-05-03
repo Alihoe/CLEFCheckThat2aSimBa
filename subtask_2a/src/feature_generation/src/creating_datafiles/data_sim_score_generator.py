@@ -26,6 +26,9 @@ class SimScoreType(enum.Enum):
     subject_sim = 8
     token_number_sim = 9
     ne_ne_ratio_sim = 10
+    ne_token_ratio_sim = 11
+    main_syms_ratio = 12
+    words_ratio = 13
 
 
 class EncodingMethod(enum.Enum):
@@ -56,8 +59,15 @@ class SimilarityScoreDataGenerator:
             self.sim_score_computer = SimScoreType.token_number_sim.name
         elif sim_score_type == SimScoreType.ne_ne_ratio_sim.name:
             self.sim_score_computer = SimScoreType.ne_ne_ratio_sim.name
+        elif sim_score_type == SimScoreType.ne_token_ratio_sim.name:
+            self.sim_score_computer = SimScoreType.ne_token_ratio_sim.name
+        elif sim_score_type == SimScoreType.words_ratio.name:
+            self.sim_score_computer = SimScoreType.words_ratio.name
+        elif sim_score_type == SimScoreType.main_syms_ratio.name:
+            self.sim_score_computer = SimScoreType.main_syms_ratio.name
 
-    def generate_all_sim_scores(self, input_claims, ver_claims, all_sim_scores_file):
+
+    def generate_all_sim_scores(self, input_claims, ver_claims, all_sim_scores_file, token_numbers=0, vclaims_tokens=0):
         if self.sim_score_computer == SimScoreType.cosine_sim.name or \
                 self.sim_score_computer == SimScoreType.ne_sim.name or \
                 self.sim_score_computer == SimScoreType.syn_sim.name or\
@@ -164,7 +174,9 @@ class SimilarityScoreDataGenerator:
                 this_i_claim_df['sim_score'] = abs(ver_claim_token_numbers-this_claim_number_of_tokens)
                 sim_score_df = pd.concat([sim_score_df, this_i_claim_df])
             sim_score_df.to_pickle(all_sim_scores_file)
-        elif self.sim_score_computer == SimScoreType.ne_ne_ratio_sim.name:
+        elif self.sim_score_computer == SimScoreType.ne_ne_ratio_sim.name or \
+                self.sim_score_computer == SimScoreType.main_syms_ratio.name or \
+                self.sim_score_computer == SimScoreType.words_ratio.name:
             input_claims_df = pd.read_pickle(input_claims)
             ver_claims_df = pd.read_pickle(ver_claims)
             input_claims_col = input_claims_df.columns
@@ -186,6 +198,37 @@ class SimilarityScoreDataGenerator:
                     ListEntitySimComputer.comp_ratio, axis=1, args=[this_claim_entity_list])
                 sim_score_df = pd.concat([sim_score_df, this_i_claim_df])
             sim_score_df.to_pickle(all_sim_scores_file)
+        elif self.sim_score_computer == SimScoreType.ne_token_ratio_sim.name:
+            input_claims_df = pd.read_pickle(input_claims)
+            ver_claims_df = pd.read_pickle(ver_claims)
+            input_claims_col = input_claims_df.columns
+            input_claim_ids = input_claims_df[[input_claims_col[0]]].values
+            ver_claims_col = ver_claims_df.columns
+            ver_claim_ids = ver_claims_df[[ver_claims_col[0]]].values.tolist()
+            input_claim_entity_lists = input_claims_df[[input_claims_col[1]]].values
+            ver_claim_entity_lists_df = ver_claims_df[[ver_claims_col[1]]]
+            input_claim_tokens_df = pd.read_pickle(token_numbers)
+            ver_claims_tokens_df = pd.read_pickle(vclaims_tokens)
+            input_claims_tokens_col = input_claim_tokens_df.columns
+            ver_claims_tokens_col = ver_claims_tokens_df.columns
+            sim_score_df = pd.DataFrame(columns=['i_claim_id', 'ver_claim_id', 'sim_score'])
+            input_claim_token_numbers = input_claim_tokens_df[[input_claims_tokens_col[1]]].values
+            ver_claim_token_numbers = ver_claims_tokens_df[[ver_claims_tokens_col[1]]]
+            ver_claim_entities_and_tokens = pd.concat([ver_claim_entity_lists_df.reset_index(drop=True), ver_claim_token_numbers], axis=1)
+            for i in range(len(input_claim_ids)):
+                this_i_claim_df = pd.DataFrame(columns=['i_claim_id', 'ver_claim_id', 'sim_score'])
+                claim_id = input_claim_ids[i][0]
+                print(claim_id)
+                this_claim_entity_list = input_claim_entity_lists[i]
+                this_claim_token_number = input_claim_token_numbers[i]
+                nrows = ver_claim_entity_lists_df.shape[0]
+                this_i_claim_df['ver_claim_id'] = ListEntitySimComputer.add_flatten_lists(ver_claim_ids)
+                this_i_claim_df['i_claim_id'] = pd.Series([claim_id] * nrows)
+                this_i_claim_df['sim_score'] = ver_claim_entities_and_tokens.apply(
+                    ListEntitySimComputer.comp_token_ratio, axis=1, args=[this_claim_entity_list, this_claim_token_number])
+                sim_score_df = pd.concat([sim_score_df, this_i_claim_df])
+            sim_score_df.to_pickle(all_sim_scores_file)
+
 
     @staticmethod
     def generate_top_n_from_top_all_sim_scores(all_sim_scores_file, n, top_n_sim_scores_file):

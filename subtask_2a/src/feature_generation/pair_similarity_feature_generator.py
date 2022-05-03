@@ -28,7 +28,11 @@ from src.feature_generation.file_paths.TEST.TEST_file_names import sbert_encodin
     top_50_infersent_sims_test_TEST_tsv, top_50_universal_sims_test_TEST_tsv, top_50_sim_cse_sims_test_TEST_tsv, \
     ne_ne_ratio_sims_training_TEST, ne_ne_ratio_sims_training_TEST_tsv, ne_ne_ratio_sims_test_TEST, \
     ne_ne_ratio_sims_test_TEST_tsv, token_number_sims_training_TEST, token_number_sims_training_TEST_tsv, \
-    token_number_sims_test_TEST, token_number_sims_test_TEST_tsv, token_number_training_TEST, token_number_test_TEST
+    token_number_sims_test_TEST, token_number_sims_test_TEST_tsv, token_number_training_TEST, token_number_test_TEST, \
+    ne_token_ratio_sims_training_TEST, ne_token_ratio_sims_training_TEST_tsv, ne_token_ratio_sims_test_TEST, \
+    ne_token_ratio_sims_test_TEST_tsv, main_syms_ratio_sims_test_TEST, main_syms_ratio_sims_test_TEST_tsv, \
+    main_syms_ratio_sims_training_TEST, main_syms_ratio_sims_training_TEST_tsv, words_ratio_sims_training_TEST, \
+    words_ratio_sims_training_TEST_tsv, words_ratio_sims_test_TEST, words_ratio_sims_test_TEST_tsv
 from src.feature_generation.file_paths.pp2.pp2_files import sbert_encodings_training_pp2, sbert_sims_training_pp2, \
     sbert_sims_training_pp2_tsv, sbert_encodings_test_pp2, sbert_sims_test_pp2, sbert_sims_test_pp2_tsv, \
     infersent_encodings_training_pp2, infersent_sims_training_pp2, infersent_sims_training_pp2_tsv, \
@@ -56,7 +60,8 @@ from src.feature_generation.file_paths.pp2.pp2_files import sbert_encodings_trai
     top_50_universal_sims_test_pp2_tsv, top_50_sim_cse_sims_test_pp2_tsv, ne_ne_ratio_sims_training_pp2, \
     ne_ne_ratio_sims_training_pp2_tsv, ne_ne_ratio_sims_test_pp2, ne_ne_ratio_sims_test_pp2_tsv, \
     token_number_sims_training_pp2, token_number_sims_training_pp2_tsv, token_number_sims_test_pp2, \
-    token_number_sims_test_pp2_tsv, token_number_training_pp2, token_number_test_pp2
+    token_number_sims_test_pp2_tsv, token_number_training_pp2, token_number_test_pp2, ne_token_ratio_sims_training_pp2, \
+    ne_token_ratio_sims_training_pp2_tsv, ne_token_ratio_sims_test_pp2, ne_token_ratio_sims_test_pp2_tsv
 from src.feature_generation.src.creating_datafiles.data_sim_score_generator import SimilarityScoreDataGenerator
 from src.feature_generation import Features, sbert_encodings_training_pp1, sbert_sims_training_pp1, \
     sbert_sims_training_pp1_tsv, sbert_encodings_test_pp1, sbert_sims_test_pp1, sbert_sims_test_pp1_tsv, \
@@ -88,7 +93,11 @@ from src.feature_generation import Features, sbert_encodings_training_pp1, sbert
     ne_ne_ratio_sims_training_pp1, ne_ne_ratio_sims_training_pp1_tsv, ne_ne_ratio_sims_test_pp1, \
     ne_ne_ratio_sims_test_pp1_tsv, token_number_sims_training_pp1, token_number_sims_training_pp1_tsv, \
     token_number_sims_test_pp1, token_number_sims_test_pp1_tsv, token_number_vclaims_pp1, token_number_training_pp1, \
-    token_number_test_pp1
+    token_number_test_pp1, ne_token_ratio_sims_training_pp1, ne_token_ratio_sims_training_pp1_tsv, \
+    ne_token_ratio_sims_test_pp1, ne_token_ratio_sims_test_pp1_tsv, main_syms_ratio_sims_training_pp1, \
+    main_syms_ratio_sims_training_pp1_tsv, main_syms_ratio_sims_test_pp1, main_syms_ratio_sims_test_pp1_tsv, \
+    words_ratio_sims_training_pp1, words_ratio_sims_training_pp1_tsv, words_ratio_sims_test_pp1, \
+    words_ratio_sims_test_pp1_tsv
 
 
 class PairSimilarityFeatureGenerator:
@@ -618,3 +627,106 @@ class PairSimilarityFeatureGenerator:
                 pd.read_pickle(filename).to_csv(filename_tsv)
             except RuntimeError:
                 print('Something went wrong with computing NE-NE-Ratio.')
+        if Features.ne_token_ratio.name in list_of_features:
+            try:
+                vclaims_ne = ne_vclaims_pp1
+                vclaims_tokens = token_number_vclaims_pp1
+                if 'train' in data_set or 'dev' in data_set:
+                    nes = ne_training_pp1
+                    token_numbers = token_number_training_pp1
+                    filename = ne_token_ratio_sims_training_pp1
+                    filename_tsv = ne_token_ratio_sims_training_pp1_tsv
+                    if 'pp2' in data_set:
+                        token_numbers = token_number_training_pp2
+                        nes = ne_training_pp2
+                        filename = ne_token_ratio_sims_training_pp2
+                        filename_tsv = ne_token_ratio_sims_training_pp2_tsv
+                    elif 'TEST' in data_set:
+                        token_numbers = token_number_training_TEST
+                        nes = ne_training_TEST
+                        filename = ne_token_ratio_sims_training_TEST
+                        filename_tsv = ne_token_ratio_sims_training_TEST_tsv
+                elif 'test' in data_set:
+                    nes = ne_test_pp1
+                    token_numbers = token_number_test_pp1
+                    filename = ne_token_ratio_sims_test_pp1
+                    filename_tsv = ne_token_ratio_sims_test_pp1_tsv
+                    if 'pp2' in data_set:
+                        token_numbers = token_number_test_pp2
+                        nes = ne_test_pp2
+                        filename = ne_token_ratio_sims_test_pp2
+                        filename_tsv = ne_token_ratio_sims_test_pp2_tsv
+                    elif 'TEST' in data_set:
+                        nes = ne_test_TEST
+                        token_numbers = token_number_test_TEST
+                        filename = ne_token_ratio_sims_test_TEST
+                        filename_tsv = ne_token_ratio_sims_test_TEST_tsv
+                sim_score_data_generator = SimilarityScoreDataGenerator('ne_token_ratio_sim')
+                sim_score_data_generator.generate_all_sim_scores(nes, vclaims_ne, filename, token_numbers, vclaims_tokens)
+                pd.read_pickle(filename).to_csv(filename_tsv)
+            except RuntimeError:
+                print('Something went wrong with computing NE-Token-Ratio.')
+        if Features.main_syms_ratio.name in list_of_features:
+            try:
+                vclaims_main_syms = main_syms_vclaims_pp1
+                if 'train' in data_set or 'dev' in data_set:
+                    main_syms = main_syms_training_pp1
+                    filename = main_syms_ratio_sims_training_pp1
+                    filename_tsv = main_syms_ratio_sims_training_pp1_tsv
+                    if 'pp2' in data_set:
+                        main_syms = main_syms_training_pp2
+                        #filename = main_syms_ratio_sims_training_pp2
+                        #filename_tsv = main_syms_ratio_sims_training_pp2_tsv
+                    elif 'TEST' in data_set:
+                        main_syms = main_syms_training_TEST
+                        filename = main_syms_ratio_sims_training_TEST
+                        filename_tsv = main_syms_ratio_sims_training_TEST_tsv
+                elif 'test' in data_set:
+                    main_syms = main_syms_test_pp1
+                    filename = main_syms_ratio_sims_test_pp1
+                    filename_tsv = main_syms_ratio_sims_test_pp1_tsv
+                    if 'pp2' in data_set:
+                        main_syms = main_syms_test_pp2
+                        #filename = main_syms_ratio_sims_test_pp2
+                        #filename_tsv = main_syms_ratio_sims_test_pp2_tsv
+                    elif 'TEST' in data_set:
+                        main_syms = main_syms_test_TEST
+                        filename = main_syms_ratio_sims_test_TEST
+                        filename_tsv = main_syms_ratio_sims_test_TEST_tsv
+                sim_score_data_generator = SimilarityScoreDataGenerator('main_syms_ratio')
+                sim_score_data_generator.generate_all_sim_scores(main_syms, vclaims_main_syms, filename)
+                pd.read_pickle(filename).to_csv(filename_tsv)
+            except RuntimeError:
+                print('Something went wrong with computing Main-Syms-Ratio.')
+        if Features.words_ratio.name in list_of_features:
+            try:
+                vclaims_words = words_vclaims_pp1
+                if 'train' in data_set or 'dev' in data_set:
+                    words = words_training_pp1
+                    filename = words_ratio_sims_training_pp1
+                    filename_tsv = words_ratio_sims_training_pp1_tsv
+                    if 'pp2' in data_set:
+                        words = words_training_pp2
+                        #filename = words_ratio_sims_training_pp2
+                        #filename_tsv = words_ratio_sims_training_pp2_tsv
+                    elif 'TEST' in data_set:
+                        words = words_training_TEST
+                        filename = words_ratio_sims_training_TEST
+                        filename_tsv = words_ratio_sims_training_TEST_tsv
+                elif 'test' in data_set:
+                    words = words_test_pp1
+                    filename = words_ratio_sims_test_pp1
+                    filename_tsv = words_ratio_sims_test_pp1_tsv
+                    if 'pp2' in data_set:
+                        words = words_test_pp2
+                        #filename = words_ratio_sims_test_pp2
+                        #filename_tsv = words_ratio_sims_test_pp2_tsv
+                    elif 'TEST' in data_set:
+                        words = words_test_TEST
+                        filename = words_ratio_sims_test_TEST
+                        filename_tsv = words_ratio_sims_test_TEST_tsv
+                sim_score_data_generator = SimilarityScoreDataGenerator('words_ratio')
+                sim_score_data_generator.generate_all_sim_scores(words, vclaims_words, filename)
+                pd.read_pickle(filename).to_csv(filename_tsv)
+            except RuntimeError:
+                print('Something went wrong with computing Words-Ratio.')
