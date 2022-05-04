@@ -43,7 +43,7 @@ class UnsupervisedRanker:
                 else:
                     current_feature = current_feature/-100
                     sim_score = np.divide(current_sim_score, current_feature)
-            elif feature in ['ne', 'main_syns', 'words']:
+            elif feature in ['ne', 'main_syms', 'words']:
                 if current_sim_score.empty:
                     sim_score = current_feature
                 else:

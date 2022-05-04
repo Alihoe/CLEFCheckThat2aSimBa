@@ -29,6 +29,8 @@ class SimScoreType(enum.Enum):
     ne_token_ratio_sim = 11
     main_syms_ratio = 12
     words_ratio = 13
+    words_token_ratio = 14
+    main_syms_token_ratio = 15
 
 
 class EncodingMethod(enum.Enum):
@@ -65,7 +67,10 @@ class SimilarityScoreDataGenerator:
             self.sim_score_computer = SimScoreType.words_ratio.name
         elif sim_score_type == SimScoreType.main_syms_ratio.name:
             self.sim_score_computer = SimScoreType.main_syms_ratio.name
-
+        elif sim_score_type == SimScoreType.words_token_ratio.name:
+            self.sim_score_computer = SimScoreType.words_token_ratio.name
+        elif sim_score_type == SimScoreType.main_syms_token_ratio.name:
+            self.sim_score_computer = SimScoreType.main_syms_token_ratio.name
 
     def generate_all_sim_scores(self, input_claims, ver_claims, all_sim_scores_file, token_numbers=0, vclaims_tokens=0):
         if self.sim_score_computer == SimScoreType.cosine_sim.name or \
@@ -198,7 +203,9 @@ class SimilarityScoreDataGenerator:
                     ListEntitySimComputer.comp_ratio, axis=1, args=[this_claim_entity_list])
                 sim_score_df = pd.concat([sim_score_df, this_i_claim_df])
             sim_score_df.to_pickle(all_sim_scores_file)
-        elif self.sim_score_computer == SimScoreType.ne_token_ratio_sim.name:
+        elif self.sim_score_computer == SimScoreType.ne_token_ratio_sim.name or \
+                self.sim_score_computer == SimScoreType.words_token_ratio.name or\
+                self.sim_score_computer == SimScoreType.main_syms_token_ratio.name:
             input_claims_df = pd.read_pickle(input_claims)
             ver_claims_df = pd.read_pickle(ver_claims)
             input_claims_col = input_claims_df.columns
