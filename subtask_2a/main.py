@@ -1,6 +1,7 @@
 from src.evaluation.scorer.main import evaluate_CLEF
 from src.feature_generation import complete_feature_set_triples_train, complete_feature_set_triples_test, \
-    complete_feature_set_pairs_train, complete_feature_set_pairs_test, triple_ranks_test_pp1
+    complete_feature_set_pairs_train, complete_feature_set_pairs_test, triple_ranks_test_pp1, pp_old_test_data, \
+    old_test_data, old_test_data_labels
 from src.feature_generation.feature_set_generator import FeatureSetGenerator
 from src.feature_generation.file_paths.TEST.TEST_file_names import complete_feature_set_pairs_test_TEST, \
     complete_feature_set_triples_test_TEST
@@ -14,39 +15,6 @@ import pandas as pd
 
 from src.prediction.unsupervised_ranker import UnsupervisedRanker
 
-# training_data = 'data/original_twitter_data/training_data/CT2022-Task2A-EN-Train-Dev_Queries.tsv'
-# pp_training_data = 'data/pp_twitter_data/training_data/pp_CT2022-Task2A-EN-Train-Dev_Queries.tsv'
-#
-# training_data_labels_train = 'data/original_twitter_data/training_data/CT2022-Task2A-EN-Train_QRELs.tsv'
-# training_data_labels_dev = 'data/original_twitter_data/training_data/CT2022-Task2A-EN-Dev_QRELs.tsv'
-# all_training_data_labels = 'data/original_twitter_data/training_data/all_train.pkl'
-#
-#
-# old_test_data = 'data/original_twitter_data/test_data/CT2022-Task2A-EN-Dev-Test_Queries.tsv'
-# pp_old_test_data = 'data/pp_twitter_data/test_data/pp_CT2022-Task2A-EN-Dev-Test_Queries.tsv'
-# old_test_data_labels = 'data/original_twitter_data/test_data/CT2022-Task2A-EN-Dev-Test_QRELs.tsv'
-#
-# v_claims = 'data/vclaims'
-#
-# old_predictions_triple = 'data/predictions/pp1/triple.tsv'
-# old_predictions_binary_proba = 'data/predictions/pp1/binary_proba.tsv'
-# old_predictions_binary = 'data/predictions/pp1/binary.tsv'
-# old_predictions_binary_top_scores = 'data/predictions/pp1/binary_top_scores.tsv'
-# old_pedictions_highest_se_sims ='data/predictions/pp1/highest_se_sims.tsv'
-# old_predictions_triple_double_classification = 'data/predictions/pp1/triple_double.tsv'
-# old_predictions_highest_5_se_sims = 'data/predictions/pp1/predictions_highest_5_se_sims.tsv'
-# old_predictions_highest_10_se_sims = 'data/predictions/pp1/predictions_highest_10_se_sims.tsv'
-# old_predictions_highest_50_se_sims = 'data/predictions/pp1/predictions_highest_50_se_sims.tsv'
-#
-# TEST_data = 'data/TEST/test_TEST.tsv'
-# pp_TEST_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
-# predictions_triple = 'data/predictions/TEST/triple.tsv'
-# predictions_binary_proba = 'data/predictions/TEST/binary_proba.tsv'
-# predictions_binary = 'data/predictions/TEST/binary.tsv'
-# predictions_highest_se_sims ='data/predictions/TEST/highest_se_sims.tsv'
-# predictions_binary_top_scores = 'data/predictions/TEST/binary_top_scores.tsv'
-#
-# feature_correlation_training_data_spearman = 'data/evaluation/feature_correlation_training_data_spearman.tsv'
 
 
 if __name__ == '__main__':
@@ -84,6 +52,9 @@ if __name__ == '__main__':
     # pp_training_data = pre_processor.pre_process(training_data, pp_training_data)
     # pp_old_test_data = pre_processor.pre_process(old_test_data, pp_old_test_data)
 
+    fsg = FeatureSetGenerator(['infersent'])
+    fsg.generate_feature_set(pp_old_test_data)
+
     # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
     #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number'])
     # fsg.prepare_vclaims(v_claims)
@@ -95,29 +66,39 @@ if __name__ == '__main__':
     # fsg = FeatureSetGenerator(['main_syms_ratio', 'words_ratio'])
     # fsg.generate_feature_set(pp_old_test_data)
 
-    # top_5_sim_cse = 'data/unsupervised_ranking/pp1/top_5_sim_cse.tsv'
-    # top_5_sbert = 'data/unsupervised_ranking/pp1/top_5_sbert.tsv'
-    # top_5_universal = 'data/unsupervised_ranking/pp1/top_5_universal.tsv'
-    # top_5_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok.tsv'
-    # top_5_sim_cse_jacc_tok_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_words.tsv'
-    # top_5_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_words.tsv'
-    # top_5_sim_cse_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_ne.tsv'
-    # top_5_sim_cse_jacc_tok_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_ne.tsv'
-    # top_5_all_features = 'data/unsupervised_ranking/pp1/top_5_all_features.tsv'
-    # top_5_all_features_without_infersent = 'data/unsupervised_ranking/pp1/top_5_all_features_without_infersent.tsv'
-    # top_5_no_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_no_sentence_embeddings.tsv'
-    # top_5_sbert_universal_sim_cse_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_features.tsv'
-    # top_5_sbert_universal_sim_cse_ne_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_features.tsv'
-    # top_5_sbert_universal_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_jacc_tok.tsv'
-    # top_5_all_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_all_sentence_embeddings.tsv'
-    # top_5_sbert_universal_sim_cse_ne_ne_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_ne_ratio_features.tsv'
-    # top_5_sbert_universal_sim_cse_ne_token_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_token_ratio_features.tsv'
-    # top_5_sbert_universal_sim_cse_main_syms_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_main_syms_ratio_features.tsv'
-    # top_5_sbert_universal_sim_cse_words_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_words_ratio_features.tsv'
+    top_5_sim_cse = 'data/unsupervised_ranking/pp1/top_5_sim_cse.tsv'
+    top_5_sbert = 'data/unsupervised_ranking/pp1/top_5_sbert.tsv'
+    top_5_universal = 'data/unsupervised_ranking/pp1/top_5_universal.tsv'
+    top_5_infersent = 'data/unsupervised_ranking/pp1/top_5_infersent.tsv'
+    top_5_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok.tsv'
+    top_5_sim_cse_jacc_tok_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_words.tsv'
+    top_5_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sim_cse_words.tsv'
+    top_5_sim_cse_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_ne.tsv'
+    top_5_sim_cse_jacc_tok_ne = 'data/unsupervised_ranking/pp1/top_5_sim_cse_jacc_tok_ne.tsv'
+    top_5_all_features = 'data/unsupervised_ranking/pp1/top_5_all_features.tsv'
+    top_5_all_features_without_infersent = 'data/unsupervised_ranking/pp1/top_5_all_features_without_infersent.tsv'
+    top_5_no_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_no_sentence_embeddings.tsv'
+    top_5_sbert_universal_sim_cse_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_features.tsv'
+    top_5_sbert_universal_sim_cse_ne_features = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_features.tsv'
+    top_5_sbert_universal_sim_cse_jacc_tok = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_jacc_tok.tsv'
+    top_5_all_sentence_embeddings = 'data/unsupervised_ranking/pp1/top_5_all_sentence_embeddings.tsv'
+    top_5_sbert_universal_sim_cse_ne_ne_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_ne_ratio_features.tsv'
+    top_5_sbert_universal_sim_cse_ne_token_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_ne_token_ratio_features.tsv'
+    top_5_sbert_universal_sim_cse_main_syms_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_main_syms_ratio_features.tsv'
+    top_5_sbert_universal_sim_cse_words_ratio = 'data/unsupervised_ranking/pp1/top_5_sbert_universal_sim_cse_words_ratio_features.tsv'
+
+    # # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+    # #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+    # #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+    # #                            'words_token_ratio'])
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse'], 'pp1')
     # ufsg.create_top_n_output_file(old_test_data, top_5_all_sentence_embeddings, n=5)
-    # evaluate_CLEF(old_test_data_labels, top_5_all_sentence_embeddings) #0.9091
+    # evaluate_CLEF(old_test_data_labels, top_5_all_sentence_embeddings) #0.9064 infersent fast text
+
+    ufsg = UnsupervisedFeatureSetGenerator(['infersent'], 'pp1')
+    ufsg.create_top_n_output_file(old_test_data, top_5_infersent, n=5)
+    evaluate_CLEF(old_test_data_labels, top_5_infersent) # Fast Text: 0.4644, Glove: 0.3468
     #
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'pp1')
     # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_features, n=5)
@@ -208,23 +189,23 @@ if __name__ == '__main__':
     # # TEST
     # ###
 
-    up_test_data = 'data/TEST/test_TEST.tsv'
-    test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
-    output = 'data/output/output_2a.tsv'
-
-
-    # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
-    #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
-    #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
-    #                            'words_token_ratio'])
-    # pre_processor = PreProcessor('cleaning_tweets')
-    # pp_TEST_data = pre_processor.pre_process(up_test_data, test_data)
+    # up_test_data = 'data/TEST/test_TEST.tsv'
+    # test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
+    # output = 'data/output/output_2a.tsv'
     #
-    # featureset_test = fsg.generate_feature_set(test_data)
-
-
-    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'TEST')
-    ufsg.create_top_n_output_file(test_data, output, n=5)
+    #
+    # # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+    # #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+    # #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+    # #                            'words_token_ratio'])
+    # # pre_processor = PreProcessor('cleaning_tweets')
+    # # pp_TEST_data = pre_processor.pre_process(up_test_data, test_data)
+    # #
+    # # featureset_test = fsg.generate_feature_set(test_data)
+    #
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'TEST')
+    # ufsg.create_top_n_output_file(test_data, output, n=5)
 
 
 

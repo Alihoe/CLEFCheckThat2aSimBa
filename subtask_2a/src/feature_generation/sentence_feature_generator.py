@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 from src.feature_generation import Features, sbert_encodings_vclaims_pp1, sbert_encodings_training_pp1, \
     sbert_encodings_vclaims_pp1_tsv, sbert_encodings_training_pp1_tsv, sbert_encodings_test_pp1, \
     sbert_encodings_test_pp1_tsv, infersent_encodings_vclaims_pp1, infersent_encodings_vclaims_pp1_tsv, \
@@ -14,7 +15,8 @@ from src.feature_generation import Features, sbert_encodings_vclaims_pp1, sbert_
     words_training_pp1, words_training_pp1_tsv, words_test_pp1, words_test_pp1_tsv, subjects_vclaims_pp1, \
     subjects_vclaims_pp1_tsv, subjects_training_pp1, subjects_training_pp1_tsv, subjects_test_pp1, \
     subjects_test_pp1_tsv, token_number_vclaims_pp1, token_number_vclaims_pp1_tsv, token_number_training_pp1, \
-    token_number_training_pp1_tsv, token_number_test_pp1, token_number_test_pp1_tsv
+    token_number_training_pp1_tsv, token_number_test_pp1, token_number_test_pp1_tsv, v_claims_directory, \
+    pp_training_data, pp_old_test_data, pp_TEST_data
 from src.feature_generation.file_paths.TEST.TEST_file_names import sbert_encodings_training_TEST, \
     sbert_encodings_training_TEST_tsv, sbert_encodings_test_TEST, sbert_encodings_test_TEST_tsv, \
     infersent_encodings_training_TEST, infersent_encodings_training_TEST_tsv, infersent_encodings_test_TEST, \
@@ -79,32 +81,36 @@ class SentenceFeatureGenerator:
                 pd.read_pickle(filename).to_csv(filename_tsv)
             except RuntimeError:
                 print('Something went wrong encoding with sbert.')
-        if Features.infersent.name in list_of_features:
+        if Features.infersent.name in list_of_features: #InferSent - Encodings have to be done for all encodings at once
             try:
-                if 'vclaims' in data_set:
-                    filename = infersent_encodings_vclaims_pp1
-                    filename_tsv = infersent_encodings_vclaims_pp1_tsv
-                elif 'train' in data_set or 'dev' in data_set:
-                    filename = infersent_encodings_training_pp1
-                    filename_tsv = infersent_encodings_training_pp1_tsv
-                    if 'pp2' in data_set:
-                        filename = infersent_encodings_training_pp2
-                        filename_tsv = infersent_encodings_training_pp2_tsv
-                    elif 'TEST' in data_set:
-                        filename = infersent_encodings_training_TEST
-                        filename_tsv = infersent_encodings_training_TEST_tsv
-                elif 'test' in data_set:
-                    filename = infersent_encodings_test_pp1
-                    filename_tsv = infersent_encodings_test_pp1_tsv
-                    if 'pp2' in data_set:
-                        filename = infersent_encodings_test_pp2
-                        filename_tsv = infersent_encodings_test_pp2_tsv
-                    elif 'TEST' in data_set:
-                        filename = infersent_encodings_test_TEST
-                        filename_tsv = infersent_encodings_test_TEST_tsv
-                data_encoder = DataEncoder('infer_sent_encoder', 'glove_embeddings', 'full_text')
-                data_encoder.encode(data_set, filename)
-                pd.read_pickle(filename).to_csv(filename_tsv)
+                dataset_vclaims = v_claims_directory
+                dataset_train_pp1 = pp_training_data
+                dataset_test_pp1 = pp_old_test_data
+                dataset_test_TEST = pp_TEST_data
+                filename_vclaims = infersent_encodings_vclaims_pp1
+                filename_vclaims_tsv = infersent_encodings_vclaims_pp1_tsv
+                filename_train_pp1 = infersent_encodings_training_pp1
+                filename_train_pp1_tsv = infersent_encodings_training_pp1_tsv
+                filename_test_pp1 = infersent_encodings_test_pp1
+                filename_test_pp1_tsv = infersent_encodings_test_pp1_tsv
+                filename_test_TEST = infersent_encodings_test_TEST
+                filename_test_TEST_tsv = infersent_encodings_test_TEST_tsv
+
+                sentences_for_vocab = []
+                sentences_for_vocab.extend(DataEncoder.get_sentences_to_encode(dataset_vclaims))
+                sentences_for_vocab.extend(DataEncoder.get_sentences_to_encode(dataset_train_pp1))
+                sentences_for_vocab.extend(DataEncoder.get_sentences_to_encode(dataset_test_pp1))
+                sentences_for_vocab.extend(DataEncoder.get_sentences_to_encode(dataset_test_TEST))
+                data_encoder = DataEncoder('infer_sent_encoder', 'fast_text_embeddings', 'full_text', sentences_for_vocab)
+
+                data_encoder.encode(dataset_vclaims, filename_vclaims)
+                pd.read_pickle(filename_vclaims).to_csv(filename_vclaims_tsv)
+                data_encoder.encode(dataset_train_pp1, filename_train_pp1)
+                pd.read_pickle(filename_train_pp1).to_csv(filename_train_pp1_tsv)
+                data_encoder.encode(dataset_test_pp1, filename_test_pp1)
+                pd.read_pickle(filename_test_pp1).to_csv(filename_test_pp1_tsv)
+                data_encoder.encode(dataset_test_TEST, filename_test_TEST)
+                pd.read_pickle(filename_test_TEST).to_csv(filename_test_TEST_tsv)
             except RuntimeError:
                 print('Something went wrong encoding with infersent.')
         if Features.universal.name in list_of_features:

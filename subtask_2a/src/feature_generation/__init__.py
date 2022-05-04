@@ -22,6 +22,39 @@ class Features(enum.Enum):
     words_ratio = 18
     words_token_ratio = 19
 
+training_data = 'data/original_twitter_data/training_data/CT2022-Task2A-EN-Train-Dev_Queries.tsv'
+pp_training_data = 'data/pp_twitter_data/training_data/pp_CT2022-Task2A-EN-Train-Dev_Queries.tsv'
+
+training_data_labels_train = 'data/original_twitter_data/training_data/CT2022-Task2A-EN-Train_QRELs.tsv'
+training_data_labels_dev = 'data/original_twitter_data/training_data/CT2022-Task2A-EN-Dev_QRELs.tsv'
+all_training_data_labels = 'data/original_twitter_data/training_data/all_train.pkl'
+
+
+old_test_data = 'data/original_twitter_data/test_data/CT2022-Task2A-EN-Dev-Test_Queries.tsv'
+pp_old_test_data = 'data/pp_twitter_data/test_data/pp_CT2022-Task2A-EN-Dev-Test_Queries.tsv'
+old_test_data_labels = 'data/original_twitter_data/test_data/CT2022-Task2A-EN-Dev-Test_QRELs.tsv'
+
+v_claims = 'data/vclaims'
+
+old_predictions_triple = 'data/predictions/pp1/triple.tsv'
+old_predictions_binary_proba = 'data/predictions/pp1/binary_proba.tsv'
+old_predictions_binary = 'data/predictions/pp1/binary.tsv'
+old_predictions_binary_top_scores = 'data/predictions/pp1/binary_top_scores.tsv'
+old_pedictions_highest_se_sims ='data/predictions/pp1/highest_se_sims.tsv'
+old_predictions_triple_double_classification = 'data/predictions/pp1/triple_double.tsv'
+old_predictions_highest_5_se_sims = 'data/predictions/pp1/predictions_highest_5_se_sims.tsv'
+old_predictions_highest_10_se_sims = 'data/predictions/pp1/predictions_highest_10_se_sims.tsv'
+old_predictions_highest_50_se_sims = 'data/predictions/pp1/predictions_highest_50_se_sims.tsv'
+
+TEST_data = 'data/TEST/test_TEST.tsv'
+pp_TEST_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
+predictions_triple = 'data/predictions/TEST/triple.tsv'
+predictions_binary_proba = 'data/predictions/TEST/binary_proba.tsv'
+predictions_binary = 'data/predictions/TEST/binary.tsv'
+predictions_highest_se_sims ='data/predictions/TEST/highest_se_sims.tsv'
+predictions_binary_top_scores = 'data/predictions/TEST/binary_top_scores.tsv'
+
+feature_correlation_training_data_spearman = 'data/evaluation/feature_correlation_training_data_spearman.tsv'
 
 v_claims_directory = 'data/vclaims'
 v_claims_df = 'data/vclaims_df.pkl'

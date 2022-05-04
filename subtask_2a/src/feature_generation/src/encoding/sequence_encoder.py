@@ -24,13 +24,13 @@ class TextEncodingMethod(enum.Enum):
 
 class SequenceEncoder:
 
-    def __init__(self, encoder_type, encoder_type_model):
+    def __init__(self, encoder_type, encoder_type_model, sentences_for_vocab=0):
         nltk.download('punkt')
         self.encoder_type = encoder_type
         if self.encoder_type == EncoderType.sbert_encoder.name:
             self.encoder = SbertEncoder(encoder_type_model)
         elif self.encoder_type == EncoderType.infer_sent_encoder.name:
-            self.encoder = InferSentEncoder(encoder_type_model)
+            self.encoder = InferSentEncoder(encoder_type_model, sentences_for_vocab)
         elif self.encoder_type == EncoderType.universal_sentence_encoder.name:
             self.encoder = UniversalSentenceEncoder()
         elif self.encoder_type == EncoderType.sim_cse_encoder.name:

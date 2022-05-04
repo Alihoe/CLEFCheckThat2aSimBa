@@ -1,7 +1,8 @@
 import pandas as pd
 
 from src.feature_generation import v_claims_directory, complete_feature_set_pairs_train, \
-    complete_feature_set_triples_train, v_claims_df, complete_feature_set_pairs_test, complete_feature_set_triples_test
+    complete_feature_set_triples_train, v_claims_df, complete_feature_set_pairs_test, complete_feature_set_triples_test, \
+    Features
 from src.feature_generation.feature_set_combiner import FeatureSetCombiner
 from src.feature_generation.file_paths.TEST.TEST_file_names import complete_feature_set_pairs_train_TEST, \
     complete_feature_set_triples_train_TEST, complete_feature_set_pairs_test_TEST, \
