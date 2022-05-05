@@ -318,3 +318,12 @@ ne_token_ratio_test_TEST.pkl
 ne_token_ratio_test_TEST.tsv
 words_ratio_test_TEST.pkl
 words_ratio_test_TEST.tsv
+test_first_fifteen_features.pkl
+test_first_fourteen_features.pkl
+test_first_nineteen_features.pkl
+test_first_seventeen_features.pkl
+test_first_sixteen_features.pkl
+test_first_thirteen_features.pkl
+test_first_twelve_features.pkl
+test_first_twelve_features.tsv
+test_firsteighteen_features.pkl

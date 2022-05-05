@@ -17,9 +17,9 @@ from src.feature_generation import Features, sbert_encodings_vclaims_pp1, sbert_
     subjects_test_pp1_tsv, token_number_vclaims_pp1, token_number_vclaims_pp1_tsv, token_number_training_pp1, \
     token_number_training_pp1_tsv, token_number_test_pp1, token_number_test_pp1_tsv, v_claims_directory, \
     pp_training_data, pp_old_test_data, pp_TEST_data
-from src.feature_generation.file_paths.TEST.TEST_file_names import sbert_encodings_training_TEST, \
+from src.feature_generation.file_paths.TEST_file_names import sbert_encodings_training_TEST, \
     sbert_encodings_training_TEST_tsv, sbert_encodings_test_TEST, sbert_encodings_test_TEST_tsv, \
-    infersent_encodings_training_TEST, infersent_encodings_training_TEST_tsv, infersent_encodings_test_TEST, \
+    infersent_encodings_test_TEST, \
     infersent_encodings_test_TEST_tsv, universal_encodings_training_TEST, universal_encodings_training_TEST_tsv, \
     universal_encodings_test_TEST, universal_encodings_test_TEST_tsv, sim_cse_encodings_training_TEST, \
     sim_cse_encodings_training_TEST_tsv, sim_cse_encodings_test_TEST, sim_cse_encodings_test_TEST_tsv, ne_training_TEST, \
@@ -27,11 +27,9 @@ from src.feature_generation.file_paths.TEST.TEST_file_names import sbert_encodin
     main_syms_test_TEST, main_syms_test_TEST_tsv, words_training_TEST, words_training_TEST_tsv, words_test_TEST, \
     words_test_TEST_tsv, subjects_training_TEST, subjects_training_TEST_tsv, subjects_test_TEST, subjects_test_TEST_tsv, \
     token_number_training_TEST, token_number_training_TEST_tsv, token_number_test_TEST, token_number_test_TEST_tsv
-from src.feature_generation.file_paths.pp2.pp2_files import sbert_encodings_training_pp2, \
+from src.feature_generation.file_paths.pp2_files import sbert_encodings_training_pp2, \
     sbert_encodings_training_pp2_tsv, \
-    sbert_encodings_test_pp2, sbert_encodings_test_pp2_tsv, infersent_encodings_training_pp2, \
-    infersent_encodings_training_pp2_tsv, \
-    infersent_encodings_test_pp2, infersent_encodings_test_pp2_tsv, universal_encodings_training_pp2, \
+    sbert_encodings_test_pp2, sbert_encodings_test_pp2_tsv, universal_encodings_training_pp2, \
     universal_encodings_training_pp2_tsv, \
     universal_encodings_test_pp2, universal_encodings_test_pp2_tsv, sim_cse_encodings_training_pp2, \
     sim_cse_encodings_training_pp2_tsv, \

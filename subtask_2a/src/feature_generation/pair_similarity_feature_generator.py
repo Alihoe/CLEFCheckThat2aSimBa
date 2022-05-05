@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.feature_generation.file_paths.TEST.TEST_file_names import sbert_encodings_training_TEST, \
+from src.feature_generation.file_paths.TEST_file_names import sbert_encodings_training_TEST, \
     sbert_sims_training_TEST_tsv, sbert_encodings_test_TEST, sbert_sims_test_TEST, sbert_sims_test_TEST_tsv, \
     sbert_sims_training_TEST, infersent_encodings_training_TEST, infersent_sims_training_TEST, \
     infersent_sims_training_TEST_tsv, infersent_encodings_test_TEST, infersent_sims_test_TEST, \
@@ -37,7 +37,7 @@ from src.feature_generation.file_paths.TEST.TEST_file_names import sbert_encodin
     main_syms_token_ratio_sims_test_TEST, main_syms_token_ratio_sims_test_TEST_tsv, \
     words_token_ratio_sims_training_TEST, words_token_ratio_sims_training_TEST_tsv, words_token_ratio_sims_test_TEST, \
     words_token_ratio_sims_test_TEST_tsv
-from src.feature_generation.file_paths.pp2.pp2_files import sbert_encodings_training_pp2, sbert_sims_training_pp2, \
+from src.feature_generation.file_paths.pp2_files import sbert_encodings_training_pp2, sbert_sims_training_pp2, \
     sbert_sims_training_pp2_tsv, sbert_encodings_test_pp2, sbert_sims_test_pp2, sbert_sims_test_pp2_tsv, \
     infersent_encodings_training_pp2, infersent_sims_training_pp2, infersent_sims_training_pp2_tsv, \
     infersent_encodings_test_pp2, infersent_sims_test_pp2, infersent_sims_test_pp2_tsv, \

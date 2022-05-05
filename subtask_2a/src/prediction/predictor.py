@@ -3,7 +3,7 @@ import pandas as pd
 
 from src.feature_generation import training_data_general, labels_general, triple_ranks_training_pp1, \
     triple_ranks_test_pp1, triple_ranks_training_labeled_pp1
-from src.feature_generation.file_paths.TEST.TEST_file_names import triple_ranks_training_TEST, triple_ranks_test_TEST, \
+from src.feature_generation.file_paths.TEST_file_names import triple_ranks_training_TEST, triple_ranks_test_TEST, \
     triple_ranks_training_labeled_TEST
 from src.feature_generation.src.creating_datafiles.feature_set_maker import FeatureSetMaker
 from src.prediction.src.output_formatter import OutputFormatter

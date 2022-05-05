@@ -166,19 +166,17 @@ class OutputFormatter:
         df.to_csv(output_data, index=False, header=False, sep='\t')
 
     @classmethod
-    def format_binary_output(self, output, underlying_data, output_data):
+    def format_binary_output(self, output, underlying_data, output_data, n=5):
         col = output.columns
         ses1 = col[2]
         ses2 = col[3]
-        ses3 = col[4]
         ses4 = col[5]
         df = output
         df = df.loc[df['rank'] == 1]
         s1 = df[ses1].to_numpy()
         s2 = df[ses2].to_numpy()
-        s3 = df[ses3].to_numpy()
         s4 = df[ses4].to_numpy()
-        df['sim_score'] = np.mean(np.array([s1, s2, s3, s4]), axis=0)
+        df['sim_score'] = np.mean(np.array([s1, s2, s4]), axis=0)
         df['QO'] = 'QO'
         df['rank'] = '1'
         df['tag'] = 'SimBa'
@@ -192,14 +190,15 @@ class OutputFormatter:
                 this_i_claim_df = output[output.i_claim_id == i_claim_id]
                 s1 = this_i_claim_df[ses1]
                 s2 = this_i_claim_df[ses2]
-                s3 = this_i_claim_df[ses3]
                 s4 = this_i_claim_df[ses4]
-                this_i_claim_df['sim_score'] = np.mean(np.array([s1, s2, s3, s4]), axis=0)
-                max_score_row = this_i_claim_df.iloc[this_i_claim_df['sim_score'].argmax()]
-                ver_claim = max_score_row['ver_claim_id']
-                sim_score = max_score_row['sim_score']
-                s_row = pd.Series([i_claim_id, 'QO', ver_claim, '1', sim_score, 'SimBa'], index=df.columns)
-                df = df.append(s_row, ignore_index=True)
+                this_i_claim_df['sim_score'] = np.mean(np.array([s1, s2, s4]), axis=0)
+                this_i_claim_df = this_i_claim_df.sort_values('sim_score', ascending=False)
+                this_i_claim_df = this_i_claim_df.head(n=n)
+                this_i_claim_df['QO'] = 'QO'
+                this_i_claim_df['rank'] = '1'
+                this_i_claim_df['tag'] = 'SimBa'
+                this_i_claim_df = this_i_claim_df[['i_claim_id', 'QO', 'ver_claim_id', 'rank', 'sim_score', 'tag']]
+                df = pd.concat([df, this_i_claim_df])
         df.sort_values('i_claim_id')
         df.to_csv(output_data, index=False, header=False, sep='\t')
 

@@ -172,11 +172,17 @@ ne_ne_ratio_sims_training_pp2_tsv = 'data/feature_sets/sentence_similarities/tra
 ne_token_ratio_sims_training_pp2 = 'data/feature_sets/sentence_similarities/training/pp2/ne_token_ratio_training_pp2.pkl'
 ne_token_ratio_sims_training_pp2_tsv = 'data/feature_sets/sentence_similarities/training/pp2/ne_token_ratio_training_pp2.tsv'
 # Feature 16
+main_syms_ratio_sims_training_pp2 = 'data/feature_sets/sentence_similarities/training/pp2/main_syms_ratio_training_pp2.pkl'
+main_syms_ratio_sims_training_pp2_tsv = 'data/feature_sets/sentence_similarities/training/pp2/main_syms_ratio_training_pp2.tsv'
+# Feature 17
 main_syms_token_ratio_sims_training_pp2 = 'data/feature_sets/sentence_similarities/training/pp2/main_syms_token_ratio_training_pp2.pkl'
 main_syms_token_ratio_sims_training_pp2_tsv = 'data/feature_sets/sentence_similarities/training/pp2/main_syms_token_ratio_training_pp2.tsv'
-# Feature 17
-words_token_ratio_sims_pp2 = 'data/feature_sets/sentence_similarities/training/pp2/words_token_ratio_training_pp2.pkl'
-words_token_ratio_sims_pp2_tsv = 'data/feature_sets/sentence_similarities/training/pp2/words_token_ratio_training_pp2.tsv'
+# Feature 18
+words_ratio_sims_training_pp2 = 'data/feature_sets/sentence_similarities/training/pp2/words_ratio_training_pp2.pkl'
+words_ratio_sims_training_pp2_tsv = 'data/feature_sets/sentence_similarities/training/pp2/words_ratio_training_pp2.tsv'
+# Feature 19
+words_token_ratio_sims_training_pp2 = 'data/feature_sets/sentence_similarities/training/pp2/words_token_ratio_training_pp2.pkl'
+words_token_ratio_sims_training_pp2_tsv = 'data/feature_sets/sentence_similarities/training/pp2/words_token_ratio_training_pp2.tsv'
 
 # Test
 
@@ -238,11 +244,17 @@ ne_ne_ratio_sims_test_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp
 ne_token_ratio_sims_test_pp2 = 'data/feature_sets/sentence_similarities/test/pp2/ne_token_ratio_test_pp2.pkl'
 ne_token_ratio_sims_test_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp2/ne_token_ratio_test_pp2.tsv'
 # Feature 16
+main_syms_ratio_sims_test_pp2 = 'data/feature_sets/sentence_similarities/test/pp2/main_syms_ratio_test_pp2.pkl'
+main_syms_ratio_sims_test_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp2/main_syms_ratio_test_pp2.tsv'
+# Feature 17
 main_syms_token_ratio_sims_test_pp2 = 'data/feature_sets/sentence_similarities/test/pp2/main_syms_token_ratio_test_pp2.pkl'
 main_syms_token_ratio_sims_test_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp2/main_syms_token_ratio_test_pp2.tsv'
-# Feature 17
-words_token_ratio_sims_pp2 = 'data/feature_sets/sentence_similarities/test/pp2/words_token_ratio_test_pp2.pkl'
-words_token_ratio_sims_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp2/words_token_ratio_test_pp2.tsv'
+# Feature 18
+words_ratio_sims_test_pp2 = 'data/feature_sets/sentence_similarities/test/pp2/words_ratio_test_pp2.pkl'
+words_ratio_sims_test_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp2/words_ratio_test_pp2.tsv'
+# Feature 19
+words_token_ratio_sims_test_pp2 = 'data/feature_sets/sentence_similarities/test/pp2/words_token_ratio_test_pp2.pkl'
+words_token_ratio_sims_test_pp2_tsv = 'data/feature_sets/sentence_similarities/test/pp2/words_token_ratio_test_pp2.tsv'
 
 # Combined sentence embedding similarities
 
@@ -272,8 +284,15 @@ train_first_nine_features_pp2 = 'data/feature_sets/training/pp2/incomplete_featu
 train_first_ten_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_ten_features_pp2.pkl'
 train_first_eleven_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_eleven_features_pp2.pkl'
 train_first_twelve_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_twelve_features_pp2.pkl'
+train_first_thirteen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_thirteen_features_pp2.pkl'
+train_first_fourteen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_fourteen_features_pp2.pkl'
+train_first_fifteen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_fifteen_features_pp2.pkl'
+train_first_sixteen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_sixteen_features_pp2.pkl'
+train_first_seventeen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_seventeen_features_pp2.pkl'
+train_first_eighteen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_firsteighteen_features_pp2.pkl'
+train_first_nineteen_features_pp2 = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_nineteen_features_pp2.pkl'
 
-train_first_twelve_features_pp2_tsv = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_twelve_features_pp2.tsv'
+train_first_nineteen_features_pp2_tsv = 'data/feature_sets/training/pp2/incomplete_feature_sets/train_first_twelve_features_pp2.tsv'
 
 ## test
 
@@ -285,6 +304,14 @@ test_first_nine_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_se
 test_first_ten_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_ten_features_pp2.pkl'
 test_first_eleven_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_eleven_features_pp2.pkl'
 test_first_twelve_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_twelve_features_pp2.pkl'
+test_first_thirteen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_thirteen_features_pp2.pkl'
+test_first_fourteen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_fourteen_features_pp2.pkl'
+test_first_fifteen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_fifteen_features_pp2.pkl'
+test_first_sixteen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_sixteen_features_pp2.pkl'
+test_first_seventeen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_seventeen_features_pp2.pkl'
+test_first_eighteen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_firsteighteen_features_pp2.pkl'
+test_first_nineteen_features_pp2 = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_nineteen_features_pp2.pkl'
 
-test_first_twelve_features_pp2_tsv = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_twelve_features_pp2.tsv'
+test_first_nineteen_features_pp2_tsv = 'data/feature_sets/test/pp2/incomplete_feature_sets/test_first_twelve_features_pp2.tsv'
+
 

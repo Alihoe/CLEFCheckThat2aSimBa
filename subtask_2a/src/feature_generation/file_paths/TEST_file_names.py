@@ -175,21 +175,20 @@ token_number_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/t
 ne_ne_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/ne_ne_ratio_training_TEST.pkl'
 ne_ne_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/ne_ne_ratio_training_TEST.tsv'
 # Feature 15
-ne_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_TEST_TEST.pkl'
-ne_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_TEST_TEST.tsv'
+ne_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_training_TEST.pkl'
+ne_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/ne_token_ratio_training_TEST.tsv'
 # Feature 16
-main_syms_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_ratio_TEST_TEST.pkl'
-main_syms_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_ratio_TEST_TEST.tsv'
+main_syms_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_ratio_training_TEST.pkl'
+main_syms_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_ratio_training_TEST.tsv'
 # Feature 17
-main_syms_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_TEST_TEST.pkl'
-main_syms_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_TEST_TEST.tsv'
+main_syms_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_training_TEST.pkl'
+main_syms_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/main_syms_token_ratio_training_TEST.tsv'
 # Feature 18
-words_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_ratio_TEST_TEST.pkl'
-words_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_ratio_TEST_TEST.tsv'
+words_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_ratio_training_TEST.pkl'
+words_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_ratio_training_TEST.tsv'
 # Feature 19
-words_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_TEST_TEST.pkl'
-words_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_TEST_TEST.tsv'
-
+words_token_ratio_sims_training_TEST = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_training_TEST.pkl'
+words_token_ratio_sims_training_TEST_tsv = 'data/feature_sets/sentence_similarities/training/TEST/words_token_ratio_training_TEST.tsv'
 
 # Test
 
@@ -291,8 +290,15 @@ train_first_nine_features_TEST = 'data/feature_sets/training/TEST/incomplete_fea
 train_first_ten_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_ten_features_TEST.pkl'
 train_first_eleven_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_eleven_features_TEST.pkl'
 train_first_twelve_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_twelve_features_TEST.pkl'
+train_first_thirteen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_thirteen_features_TEST.pkl'
+train_first_fourteen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_fourteen_features_TEST.pkl'
+train_first_fifteen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_fifteen_features_TEST.pkl'
+train_first_sixteen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_sixteen_features_TEST.pkl'
+train_first_seventeen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_seventeen_features_TEST.pkl'
+train_first_eighteen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_firsteighteen_features_TEST.pkl'
+train_first_nineteen_features_TEST = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_nineteen_features_TEST.pkl'
 
-train_first_twelve_features_TEST_tsv = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_twelve_features_TEST.tsv'
+train_first_nineteen_features_TEST_tsv = 'data/feature_sets/training/TEST/incomplete_feature_sets/train_first_twelve_features_TEST.tsv'
 
 ## test
 
@@ -304,5 +310,13 @@ test_first_nine_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_
 test_first_ten_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_ten_features_TEST.pkl'
 test_first_eleven_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_eleven_features_TEST.pkl'
 test_first_twelve_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_twelve_features_TEST.pkl'
+test_first_thirteen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_thirteen_features_TEST.pkl'
+test_first_fourteen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_fourteen_features_TEST.pkl'
+test_first_fifteen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_fifteen_features_TEST.pkl'
+test_first_sixteen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_sixteen_features_TEST.pkl'
+test_first_seventeen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_seventeen_features_TEST.pkl'
+test_first_eighteen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_firsteighteen_features_TEST.pkl'
+test_first_nineteen_features_TEST = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_nineteen_features_TEST.pkl'
 
-test_first_twelve_features_TEST_tsv = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_twelve_features_TEST.tsv'
+test_first_nineteen_features_TEST_tsv = 'data/feature_sets/test/TEST/incomplete_feature_sets/test_first_twelve_features_TEST.tsv'
+
