@@ -320,8 +320,8 @@ if __name__ == '__main__':
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
 
-    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'TEST')
-    ufsg.create_top_n_output_file(test_data, output, n=5)
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'TEST')
+    # ufsg.create_top_n_output_file(test_data, output, n=5)
 
 
 
