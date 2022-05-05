@@ -3,21 +3,23 @@
 
 1. sbert  0.8860
 2. sim_cse 0.8015
-3. universal 0.7222
-4. words_ratio 0.5733
-5. words 0.5520
-6. infersent 2 0.4644
-7. jaccard tokens 0.4009
-8. main syms ratio 0.3780
-9. named entities 0.3150  
-10. main syms 0.3111
-11. ne ratio 0.3035
-12. ne token ratio 0.2870
-13. sequence match 0.2804
-14. levenshtein 0.1696
-15. subjects 0.0558
-16. jaccard charcters 0.0502
-17. words token ratio 0.0029
-18. main syms token 0.0025
+3. universal 0.7222   
+4. words ratio 0.5733
+5. words token ratio  0.5488
+6. words 0.5520
+7. infersent 2 0.4644
+8. jaccard tokens 0.4009
+9. main syms ratio 0.3780
+10. main sysm token ratio 0.3192
+11. named entities 0.3150  
+12. main syms 0.3111
+13. ne ratio 0.3035
+14. ne token ratio 0.2870
+15. sequence match 0.2804
+16. levenshtein 0.1696
+17. subjects 0.0558
+18. jaccard charcters 0.0502
+19. words token ratio 0.0029
+20. main syms token 0.0025
 
  

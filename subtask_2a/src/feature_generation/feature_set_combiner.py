@@ -404,7 +404,10 @@ class FeatureSetCombiner:
             FeatureSetMaker.add_features_to_dataset(feature_set_eighteen, features_nineteen, feature_set_nineteen)
             pd.read_pickle(feature_set_nineteen).to_csv(feature_set_nineteen_tsv)
             df = pd.read_pickle(feature_set_nineteen)
-            df.columns = list_of_features
+            df.columns = ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+                               'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+                               'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+                               'words_token_ratio']
             if 'test' in data_set:
                 complete_feature_set = complete_feature_set_pairs_test
                 complete_feature_set_tsv = complete_feature_set_pairs_test_tsv
@@ -439,8 +442,9 @@ class FeatureSetCombiner:
             elif 'TEST' in dataset:
                 complete_feature_set = complete_feature_set_pairs_train_TEST
                 complete_feature_set_tsv = complete_feature_set_pairs_train_tsv_TEST
-            FeatureSetMaker.add_correct_score_to_dataframe(complete_feature_set, labels, complete_feature_set)
-            pd.read_pickle(complete_feature_set).to_csv(complete_feature_set_tsv)
+            complete_feature_set = FeatureSetMaker.add_correct_score_to_dataframe(complete_feature_set, labels,
+                                                                                  complete_feature_set)
+            complete_feature_set.to_csv(complete_feature_set_tsv)
 
 
 

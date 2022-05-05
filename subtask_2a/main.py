@@ -1,6 +1,7 @@
 from src.evaluation.scorer.main import evaluate_CLEF
 from src.feature_generation import pp_old_test_data, old_test_data, complete_feature_set_pairs_test, \
-    complete_feature_set_pairs_train, old_predictions_binary, old_test_data_labels, pp_training_data
+    complete_feature_set_pairs_train, old_predictions_binary, old_test_data_labels, pp_training_data, \
+    all_training_data_labels
 from src.feature_generation.feature_set_generator import FeatureSetGenerator
 from src.feature_generation.unsupervised_feature_set_generator import UnsupervisedFeatureSetGenerator
 from src.prediction.predictor import Predictor
@@ -63,12 +64,13 @@ if __name__ == '__main__':
     # labels = all_training_data_labels
     # featureset_train = fsg.generate_feature_set(pp_training_data, labels)
     #
-    # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
-    #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
-    #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
-    #                            'words_token_ratio'])
-    fsg = FeatureSetGenerator(['main_syms_token_ratio', 'words_token_ratio'])
-    fsg.generate_feature_set(pp_training_data)
+    fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+                               'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+                               'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+                               'words_token_ratio'])
+
+
+    fsg.generate_feature_set(pp_training_data, all_training_data_labels)
 
     # fsg.generate_feature_set(pp_training_data)
 

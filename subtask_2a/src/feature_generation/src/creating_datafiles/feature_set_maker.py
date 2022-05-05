@@ -217,6 +217,7 @@ class FeatureSetMaker:
             list_of_scores.append(score)
         feature_set_df['score'] = list_of_scores
         feature_set_df.to_pickle(feature_set_with_correct_rankings)
+        return feature_set_df
 
     @staticmethod
     def create_new_id(i_claim_id, ver_claim_id_1, ver_claim_id_2):
