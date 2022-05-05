@@ -22,8 +22,8 @@ class FeatureSetGenerator:
         self.features = list_of_features
 
     def create_features(self, dataset):
-        SentenceFeatureGenerator.create_sentence_features(self.features, dataset)
-        PairSimilarityFeatureGenerator.create_pair_similarity_features(self.features, dataset)
+        # SentenceFeatureGenerator.create_sentence_features(self.features, dataset)
+        # PairSimilarityFeatureGenerator.create_pair_similarity_features(self.features, dataset)
         PairSimilarityFeatureGenerator.compute_top_n_sentence_embeddings_features(dataset, n)
 
     def combine_features(self, dataset, labels=0):
@@ -59,7 +59,7 @@ class FeatureSetGenerator:
         return df
 
     def generate_feature_set(self, dataset, labels=0):
-        # self.create_features(dataset)
+        self.create_features(dataset)
         self.combine_features(dataset, labels)
         # return self.transform_to_triple_dataset(dataset)
 

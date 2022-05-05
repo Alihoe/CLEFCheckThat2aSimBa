@@ -5,6 +5,7 @@ from src.feature_generation import pp_old_test_data, old_test_data, complete_fea
     complete_feature_set_pairs_train, old_predictions_binary, old_test_data_labels, pp_training_data, \
     all_training_data_labels
 from src.feature_generation.feature_set_generator import FeatureSetGenerator
+from src.feature_generation.file_paths.TEST_file_names import complete_feature_set_pairs_test_TEST
 from src.feature_generation.unsupervised_feature_set_generator import UnsupervisedFeatureSetGenerator
 from src.prediction.predictor import Predictor
 
@@ -254,21 +255,22 @@ if __name__ == '__main__':
     # # TEST
     # ###
 
-    # up_test_data = 'data/TEST/test_TEST.tsv'
-    # test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
-    # output = 'data/output/output_2a.tsv'
-    #
-    #
-    # # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
-    # #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
-    # #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
-    # #                            'words_token_ratio'])
-    # # pre_processor = PreProcessor('cleaning_tweets')
-    # # pp_TEST_data = pre_processor.pre_process(up_test_data, test_data)
-    # #
-    # # featureset_test = fsg.generate_feature_set(test_data)
-    #
-    #
+    up_test_data = 'data/TEST/test_TEST.tsv'
+    test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
+    output = 'data/output/output_2a.tsv'
+
+    classification_output = 'data/predictions/TEST/classification_output.tsv'
+
+
+    # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+    #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+    #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+    #                            'words_token_ratio'])
+    # featureset_test = fsg.generate_feature_set(test_data)
+
+    predictor = Predictor('binary_classification')
+    predictor.train_and_predict(complete_feature_set_pairs_train, complete_feature_set_pairs_test_TEST, test_data, classification_output)
+
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
 
