@@ -259,7 +259,7 @@ if __name__ == '__main__':
     test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
     output = 'data/output/output_2a.tsv'
 
-    classification_output = 'data/predictions/TEST/classification_output.tsv'
+    classification_output = 'data/predictions/TEST/subtask2A_english.tsv'
 
 
     # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',

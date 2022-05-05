@@ -75,6 +75,7 @@ class RankClassifier:
         print('Positives', round(data_set['score'].value_counts()[1] / len(data_set) * 100, 2), '% of the dataset')
         col = data_set.columns
         x = data_set.iloc[:, 2:len(col)-1]
+        x_col = x.columns
         y = data_set.iloc[:, len(col)-1]
         if self.scaler == DatScaler.replace_negatives.name:
             features = x.columns
@@ -97,6 +98,7 @@ class RankClassifier:
         if self.balancer:
             x, y = self.balancer.fit_resample(x, y)
         selector = SelectFromModel(estimator=LogisticRegression()).fit(x, y)
+        print(selector.get_feature_names_out(x_col))
         x = selector.transform(x)
         self.model.fit(x, y)
         return self.model, selector
