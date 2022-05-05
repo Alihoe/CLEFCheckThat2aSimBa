@@ -130,10 +130,10 @@ if __name__ == '__main__':
     # evaluate_CLEF(old_test_data_labels, top_5_sbert_sim_cse_features) #0.9162
 
 
-
-    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'pp1')
-    ufsg.create_top_n_output_file(old_test_data, top_5_sbert_sim_cse_words, n=5)
-    evaluate_CLEF(old_test_data_labels, top_5_sbert_sim_cse_words) #0.9233
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'pp1')
+    # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_sim_cse_words, n=5)
+    # evaluate_CLEF(old_test_data_labels, top_5_sbert_sim_cse_words) #0.9233
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'words_token'], 'pp1')
     # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_words_token_ratio, n=5)
@@ -320,7 +320,7 @@ if __name__ == '__main__':
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
 
-    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse'], 'TEST')
+    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'TEST')
     ufsg.create_top_n_output_file(test_data, output, n=5)
 
 
