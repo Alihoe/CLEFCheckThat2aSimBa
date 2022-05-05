@@ -55,6 +55,25 @@ class ListEntitySimComputer:
         number_of_tokens = list_of_entities_1_number_of_tokens_1[1] + number_of_tokens_2
         list_of_entities_1 = list(list_of_entities_1_number_of_tokens_1[0])
         list_of_entities_2 = list(list_of_entities_2)
+        flatten_2 = ListEntitySimComputer.add_flatten_lists(list_of_entities_2)
+        a_set = set(list_of_entities_1)
+        if 'not available' in a_set:
+            a_set.remove('not available')
+        b_set = set(flatten_2)
+        if 'not available' in b_set:
+            b_set.remove('not available')
+        conj = a_set & b_set
+        if len(conj) == 0:
+            sim = 0
+        else:
+            sim = ((100/number_of_tokens)*len(conj)*2)[0]
+        return sim
+
+    @staticmethod
+    def comp_token_ne_ratio(list_of_entities_1_number_of_tokens_1, list_of_entities_2, number_of_tokens_2):
+        number_of_tokens = list_of_entities_1_number_of_tokens_1[1] + number_of_tokens_2
+        list_of_entities_1 = list(list_of_entities_1_number_of_tokens_1[0])
+        list_of_entities_2 = list(list_of_entities_2)
         flatten_1 = ListEntitySimComputer.add_flatten_lists(list_of_entities_1)
         flatten_2 = ListEntitySimComputer.add_flatten_lists(list_of_entities_2)
         if flatten_1 and isinstance(flatten_1[0], list):
