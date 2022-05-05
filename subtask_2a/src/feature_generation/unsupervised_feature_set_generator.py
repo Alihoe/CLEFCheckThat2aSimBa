@@ -40,7 +40,6 @@ class UnsupervisedFeatureSetGenerator:
             if not output_df.empty:
                 current_sim_score = output_df['sim_score']
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
-                print(sim_score)
             else:
                 sim_score = current_feature
             output_df['sim_score'] = sim_score
@@ -54,7 +53,6 @@ class UnsupervisedFeatureSetGenerator:
             if not output_df.empty:
                 current_sim_score = output_df['sim_score']
                 sim_score = np.mean(np.array([current_sim_score, current_feature]), axis=0)
-                print(sim_score)
             else:
                 sim_score = current_feature
             output_df['sim_score'] = sim_score
