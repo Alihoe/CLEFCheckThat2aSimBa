@@ -51,6 +51,7 @@ top_5_sbert_infersent_sim_cse_words_token_ratio = 'data/unsupervised_ranking/pp1
 top_5_sbert_sim_cse_features = 'data/unsupervised_ranking/pp1/top_5_sbert_sim_cse.tsv'
 top_5_sbert_infersent_sim_cse_words_token_ratio_words = 'data/unsupervised_ranking/pp1/top_5_sbert_infersent_sim_cse_words_token_ratio_words.tsv'
 top_5_sbert_infersent = 'data/unsupervised_ranking/pp1/top_5_sbert_infersent.tsv'
+top_5_sbert_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sbert_sim_cse_words.tsv'
 
 if __name__ == '__main__':
 
@@ -130,9 +131,9 @@ if __name__ == '__main__':
 
 
 
-    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'words'], 'pp1')
-    # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_words, n=5)
-    # evaluate_CLEF(old_test_data_labels, top_5_sbert_universal_sim_cse_words) #0.9054
+    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'pp1')
+    ufsg.create_top_n_output_file(old_test_data, top_5_sbert_sim_cse_words, n=5)
+    evaluate_CLEF(old_test_data_labels, top_5_sbert_sim_cse_words) #0.9233
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse', 'words_token'], 'pp1')
     # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_universal_sim_cse_words_token_ratio, n=5)
@@ -314,7 +315,7 @@ if __name__ == '__main__':
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
 
-    output = 'data/output/subtask2A_english'
+    output = 'data/output/subtask2A_english.tsv'
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
