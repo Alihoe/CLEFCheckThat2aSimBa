@@ -4,6 +4,7 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler, NearMiss
 from sklearn import svm, tree
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.feature_selection import SelectFromModel
 from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
@@ -33,7 +34,7 @@ class MLModel(enum.Enum):
 
 class RankClassifier:
 
-    def __init__(self, scaler_name='standard_scaler', model_name='log_reg', balancing_name='random_undersampling', sampling_strat=0.14):
+    def __init__(self, scaler_name='standard_scaler', model_name='log_reg', balancing_name=0, sampling_strat=0.1):
         self.sampling_strat = sampling_strat
         if scaler_name == DatScaler.standard_scaler.name:
             self.scaler = StandardScaler()
@@ -95,10 +96,12 @@ class RankClassifier:
             x = self.scaler.fit_transform(x)
         if self.balancer:
             x, y = self.balancer.fit_resample(x, y)
+        selector = SelectFromModel(estimator=LogisticRegression()).fit(x, y)
+        x = selector.transform(x)
         self.model.fit(x, y)
-        return self.model
+        return self.model, selector
 
-    def predict_rankings(self, model, feature_set_without_rankings):
+    def predict_rankings(self, model, feature_set_without_rankings, selector):
         if isinstance(feature_set_without_rankings, str):
             data_set = pd.read_pickle(feature_set_without_rankings)
         else:
@@ -123,6 +126,7 @@ class RankClassifier:
                 new_x[feature] = this_feature
         else:
             x = self.scaler.fit_transform(x)
+        x = selector.transform(x)
         prediction = model.predict(x)
         data_set['rank'] = prediction
         return data_set

@@ -1,3 +1,5 @@
+import pandas as pd
+
 from src.evaluation.scorer.main import evaluate_CLEF
 from src.feature_generation import pp_old_test_data, old_test_data, complete_feature_set_pairs_test, \
     complete_feature_set_pairs_train, old_predictions_binary, old_test_data_labels, pp_training_data, \
@@ -64,21 +66,27 @@ if __name__ == '__main__':
     # labels = all_training_data_labels
     # featureset_train = fsg.generate_feature_set(pp_training_data, labels)
     #
-    fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
-                               'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
-                               'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
-                               'words_token_ratio'])
+    # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+    #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+    #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+    #                            'words_token_ratio'])
+    #
+    #
+    # fsg.generate_feature_set(pp_training_data, all_training_data_labels)
 
-
-    fsg.generate_feature_set(pp_training_data, all_training_data_labels)
-
-    # fsg.generate_feature_set(pp_training_data)
 
     # predictor = Predictor('binary_classification')
     # predictor.train_and_predict(complete_feature_set_pairs_train, complete_feature_set_pairs_test, old_test_data, old_predictions_binary)
-    # evaluate_CLEF(old_test_data_labels, old_predictions_binary)
+    # evaluate_CLEF(old_test_data_labels, old_predictions_binary) #0.9163 without balancing
+    #
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'universal', 'sim_cse', 'score']]
+    # test_df = pd.read_pickle(complete_feature_set_pairs_test)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'universal', 'sim_cse']]
 
-
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(training_df, test_df, old_test_data, old_predictions_binary)
+    # evaluate_CLEF(old_test_data_labels, old_predictions_binary) #0.9129 without balancing
 
     # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
     #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',

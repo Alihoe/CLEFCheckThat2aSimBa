@@ -167,15 +167,11 @@ class OutputFormatter:
 
     @classmethod
     def format_binary_output(self, output, underlying_data, output_data, n=5):
-        col = output.columns
-        ses1 = col[2]
-        ses2 = col[3]
-        ses4 = col[5]
         df = output
         df = df.loc[df['rank'] == 1]
-        s1 = df[ses1].to_numpy()
-        s2 = df[ses2].to_numpy()
-        s4 = df[ses4].to_numpy()
+        s1 = df['sbert'].to_numpy()
+        s2 = df['infersent'].to_numpy()
+        s4 = df['sim_cse'].to_numpy()
         df['sim_score'] = np.mean(np.array([s1, s2, s4]), axis=0)
         df['QO'] = 'QO'
         df['rank'] = '1'
@@ -188,9 +184,9 @@ class OutputFormatter:
         for i_claim_id in list_of_iclaim_ids:
             if i_claim_id not in already_classified:
                 this_i_claim_df = output[output.i_claim_id == i_claim_id]
-                s1 = this_i_claim_df[ses1]
-                s2 = this_i_claim_df[ses2]
-                s4 = this_i_claim_df[ses4]
+                s1 = this_i_claim_df['sbert'].to_numpy()
+                s2 = this_i_claim_df['infersent'].to_numpy()
+                s4 = this_i_claim_df['sim_cse'].to_numpy()
                 this_i_claim_df['sim_score'] = np.mean(np.array([s1, s2, s4]), axis=0)
                 this_i_claim_df = this_i_claim_df.sort_values('sim_score', ascending=False)
                 this_i_claim_df = this_i_claim_df.head(n=n)
@@ -199,7 +195,7 @@ class OutputFormatter:
                 this_i_claim_df['tag'] = 'SimBa'
                 this_i_claim_df = this_i_claim_df[['i_claim_id', 'QO', 'ver_claim_id', 'rank', 'sim_score', 'tag']]
                 df = pd.concat([df, this_i_claim_df])
-        df.sort_values('i_claim_id')
+        df = df.sort_values('i_claim_id')
         df.to_csv(output_data, index=False, header=False, sep='\t')
 
     @classmethod

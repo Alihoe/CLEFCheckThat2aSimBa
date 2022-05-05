@@ -41,12 +41,17 @@ class Predictor:
             self.classification_mode = ClassificationMode.highest_n_se_sims.name
 
     def train_and_predict(self, training_feature_set, test_feature_set, test_data, output_data, n=5):
-        training_df = pd.read_pickle(training_feature_set)
-        if self.classification_mode == ClassificationMode.highest_se_sims.name:
+        if isinstance(training_feature_set, str):
+            training_df = pd.read_pickle(training_feature_set)
+        else:
+            training_df = training_feature_set
+        if isinstance(test_feature_set, str):
             test_df = pd.read_pickle(test_feature_set)
+        else:
+            test_df = test_feature_set
+        if self.classification_mode == ClassificationMode.highest_se_sims.name:
             OutputFormatter.rank_by_highest_sentence_embeddings_score(test_df, test_data, output_data)
         elif self.classification_mode == ClassificationMode.highest_n_se_sims.name:
-            test_df = pd.read_pickle(test_feature_set)
             OutputFormatter.rank_by_top_n_sentence_embeddings_score(test_df, test_data, output_data, n)
         elif isinstance(self.ranker, TripleRanker):
             model = self.ranker.training_of_triple_classifier(training_df)
@@ -75,8 +80,8 @@ class Predictor:
                 OutputFormatter.format_double_output(output_second_clasifier, test_data, output_data)
         elif isinstance(self.ranker, RankClassifier):
             if self.classification_mode == ClassificationMode.binary_classification.name:
-                model = self.ranker.training_of_classifier(training_df)
-                output = self.ranker.predict_rankings(model, test_feature_set)
+                model, selector = self.ranker.training_of_classifier(training_df)
+                output = self.ranker.predict_rankings(model, test_feature_set, selector)
                 OutputFormatter.format_binary_output(output, test_data, output_data)
             elif self.classification_mode == ClassificationMode.binary_proba.name:
                 model = self.ranker.training_of_prediction_classifier(training_df)
