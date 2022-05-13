@@ -22,7 +22,7 @@ class FeatureSetGenerator:
         self.features = list_of_features
 
     def create_features(self, dataset):
-        # SentenceFeatureGenerator.create_sentence_features(self.features, dataset)
+        SentenceFeatureGenerator.create_sentence_features(self.features, dataset)
         # PairSimilarityFeatureGenerator.create_pair_similarity_features(self.features, dataset)
         PairSimilarityFeatureGenerator.compute_top_n_sentence_embeddings_features(dataset, n)
 
