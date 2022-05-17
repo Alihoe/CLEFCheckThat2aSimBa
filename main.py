@@ -1,3 +1,5 @@
+import argparse
+
 import pandas as pd
 
 from src.evaluation.scorer.main import evaluate_CLEF
@@ -7,6 +9,7 @@ from src.feature_generation import pp_old_test_data, old_test_data, complete_fea
 from src.feature_generation.feature_set_generator import FeatureSetGenerator
 from src.feature_generation.file_paths.TEST_file_names import complete_feature_set_pairs_test_TEST
 from src.feature_generation.unsupervised_feature_set_generator import UnsupervisedFeatureSetGenerator
+from src.pre_processing import pre_processor
 from src.prediction.predictor import Predictor
 
 top_5_sbert = 'data/unsupervised_ranking/pp1/top_5_sbert.tsv'
@@ -54,6 +57,26 @@ top_5_sbert_infersent = 'data/unsupervised_ranking/pp1/top_5_sbert_infersent.tsv
 top_5_sbert_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sbert_sim_cse_words.tsv'
 
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Rank and score input claims.')
+    parser.add_argument('test_data', type=str, help='Pass test data that should be ranked.')
+    parser.add_argument('--preprocess', help='Preprocess the input tweets.')
+    parser.add_argument('-features', type=str, nargs='+',
+                        default=['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein',
+                                 'jacc_chars', 'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number',
+                                 'ne_ne_ratio', 'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio',
+                                 'words_ratio', 'words_token_ratio'],
+                        help='Pass a list of features that should be considered in the ranking.')
+    parser.add_argument('--unsupervised', help='Output an unsupervised ranking based on the selected features.')
+    parser.add_argument('--log_reg', help='Output a ranking based on a logistic regression classifier.')
+    parser.add_argument('--svm', help='Output a ranking based on a SVM classifier.')
+    parser.add_argument('--knn', help='Output a ranking based on a KNN classifier.')
+    parser.add_argument('--mn_naive_bayes', help='Output a ranking based on a naive bayes regression classifier.')
+    parser.add_argument('--dec_tree', help='Output a ranking based on a decision tree classifier.')
+    args = parser.parse_args()
+
+    if args.preprocess:
+        pre_processor.pre_process(args.test_data, pp_training_data)
 
 
     # FeatureSelector.feature_correlation(complete_feature_set_pairs_train, feature_correlation_training_data_spearman)
@@ -317,11 +340,15 @@ if __name__ == '__main__':
 
     output = 'data/output/subtask2A_english.tsv'
 
+    test_data_labels = 'data/TEST/CT2022-Task2A-EN-Test_Qrels_gold.tsv'
+
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
+
+    # evaluate_CLEF(test_data_labels, output)
 
 
 
