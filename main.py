@@ -10,6 +10,7 @@ from src.feature_generation.feature_set_generator import FeatureSetGenerator
 from src.feature_generation.file_paths.TEST_file_names import complete_feature_set_pairs_test_TEST
 from src.feature_generation.unsupervised_feature_set_generator import UnsupervisedFeatureSetGenerator
 from src.pre_processing import pre_processor
+from src.prediction.feature_selector import FeatureSelector
 from src.prediction.predictor import Predictor
 
 top_5_sbert = 'data/unsupervised_ranking/pp1/top_5_sbert.tsv'
@@ -58,25 +59,25 @@ top_5_sbert_sim_cse_words = 'data/unsupervised_ranking/pp1/top_5_sbert_sim_cse_w
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Rank and score input claims.')
-    parser.add_argument('test_data', type=str, help='Pass test data that should be ranked.')
-    parser.add_argument('--preprocess', help='Preprocess the input tweets.')
-    parser.add_argument('-features', type=str, nargs='+',
-                        default=['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein',
-                                 'jacc_chars', 'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number',
-                                 'ne_ne_ratio', 'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio',
-                                 'words_ratio', 'words_token_ratio'],
-                        help='Pass a list of features that should be considered in the ranking.')
-    parser.add_argument('--unsupervised', help='Output an unsupervised ranking based on the selected features.')
-    parser.add_argument('--log_reg', help='Output a ranking based on a logistic regression classifier.')
-    parser.add_argument('--svm', help='Output a ranking based on a SVM classifier.')
-    parser.add_argument('--knn', help='Output a ranking based on a KNN classifier.')
-    parser.add_argument('--mn_naive_bayes', help='Output a ranking based on a naive bayes regression classifier.')
-    parser.add_argument('--dec_tree', help='Output a ranking based on a decision tree classifier.')
-    args = parser.parse_args()
-
-    if args.preprocess:
-        pre_processor.pre_process(args.test_data, pp_training_data)
+    # parser = argparse.ArgumentParser(description='Rank and score input claims.')
+    # parser.add_argument('test_data', type=str, help='Pass test data that should be ranked.')
+    # parser.add_argument('--preprocess', help='Preprocess the input tweets.')
+    # parser.add_argument('-features', type=str, nargs='+',
+    #                     default=['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein',
+    #                              'jacc_chars', 'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number',
+    #                              'ne_ne_ratio', 'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio',
+    #                              'words_ratio', 'words_token_ratio'],
+    #                     help='Pass a list of features that should be considered in the ranking.')
+    # parser.add_argument('--unsupervised', help='Output an unsupervised ranking based on the selected features.')
+    # parser.add_argument('--log_reg', help='Output a ranking based on a logistic regression classifier.')
+    # parser.add_argument('--svm', help='Output a ranking based on a SVM classifier.')
+    # parser.add_argument('--knn', help='Output a ranking based on a KNN classifier.')
+    # parser.add_argument('--mn_naive_bayes', help='Output a ranking based on a naive bayes regression classifier.')
+    # parser.add_argument('--dec_tree', help='Output a ranking based on a decision tree classifier.')
+    # args = parser.parse_args()
+    #
+    # if args.preprocess:
+    #     pre_processor.pre_process(args.test_data, pp_training_data)
 
 
     # FeatureSelector.feature_correlation(complete_feature_set_pairs_train, feature_correlation_training_data_spearman)
@@ -105,6 +106,15 @@ if __name__ == '__main__':
     #
     # fsg.generate_feature_set(pp_training_data, all_training_data_labels)
 
+    fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
+                               'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
+                               'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
+                               'words_token_ratio'])
+
+    pp2_test_data = 'data/TEST/pp2.tsv'
+
+    fsg.generate_feature_set(pp2_test_data)
+
 
     # predictor = Predictor('binary_classification')
     # predictor.train_and_predict(complete_feature_set_pairs_train, complete_feature_set_pairs_test, old_test_data, old_predictions_binary)
@@ -123,6 +133,302 @@ if __name__ == '__main__':
     #                            'jacc_tokens', 'ne', 'main_syms', 'words', 'subjects', 'token_number', 'ne_ne_ratio',
     #                            'ne_token_ratio', 'main_syms_ratio', 'main_syms_token_ratio', 'words_ratio',
     #                            'words_token_ratio'])
+
+    output = 'test.tsv'
+
+    correlation = 'corr.tsv'
+    new_test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
+
+    test_data_labels = 'data/TEST/CT2022-Task2A-EN-Test_Qrels_gold.tsv'
+
+    test_feature_set = 'data/feature_sets/test/TEST/complete_feature_set_pairs_test_TEST.pkl'
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # test_df = pd.read_pickle(test_feature_set)
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output) # log reg: 0.8832,
+    # knn: 0.8865 ['sbert' 'infersent' 'sim_cse' 'words' 'words_token_ratio'],
+    # mn naive bayes: 0.8793 ['sbert' 'infersent' 'sim_cse' 'words'],
+    # dec_tree: 0.8502 ['sbert' 'infersent' 'sim_cse' 'words' 'words_token_ratio']
+    # linear svc 0.8792  ['sbert' 'infersent' 'sim_cse' 'words' 'words_token_ratio']
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output) #0.8832
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output) #0.8760
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'universal', 'sim_cse', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'universal', 'sim_cse']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output) #0.8784
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'universal', 'sim_cse', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'universal', 'sim_cse']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8784
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'sim_cse', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'sim_cse']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8760
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8832
+    #
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8832
+
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words', 'words_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words', 'words_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8832
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8832
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'ne_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'ne_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8820
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'ne_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'sim_cse', 'words_token_ratio', 'ne_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8820
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'sim_cse', 'words', 'words_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'sim_cse', 'words', 'words_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8820
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'sim_cse', 'words', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'sim_cse', 'words']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8820
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'words', 'jacc_tokens', 'ne_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'words', 'jacc_tokens', 'ne_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8816
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'words_token_ratio', 'jacc_tokens', 'ne_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'words_token_ratio', 'jacc_tokens', 'ne_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8840
+
+    # training_df = pd.read_pickle(complete_feature_set_pairs_train)
+    # #training_df = training_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'words_token_ratio', 'jacc_tokens', 'ne_token_ratio', 'score']]
+    # test_df = pd.read_pickle(test_feature_set)
+    # #test_df = test_df.loc[:, ['i_claim_id', 'ver_claim_id', 'sbert', 'words_token_ratio', 'jacc_tokens', 'ne_token_ratio']]
+    #
+    # predictor = Predictor('binary_classification')
+    # predictor.train_and_predict(test_feature_set, training_df, test_df, new_test_data, output)
+    # evaluate_CLEF(test_data_labels, output)  #0.8820
+
+
+
+    # FeatureSelector.feature_correlation(test_feature_set, correlation)
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output)  #0.8632
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words', 'words_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output)  #0.9038
+
+    ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'TEST')
+    ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    evaluate_CLEF(test_data_labels, output)  #0.8884
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.8801
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.8644
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.8896
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.9075
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.9143
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words', 'words_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.9127
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'words', 'jacc_tokens', 'ne_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.8694
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'words_token_ratio', 'jacc_tokens', 'ne_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.8679
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'sim_cse', 'words_token_ratio', 'ne_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.9079
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein',
+    #                                         'jacc_chars', 'jacc_tokens', 'ne', 'main_syms', 'words', 'ne_ne_ratio',
+    #                                         'ne_token_ratio', 'main_syms_ratio',
+    #                                         'main_syms_token_ratio', 'words_ratio', 'words_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.4852
+
+    # ufsg = UnsupervisedFeatureSetGenerator(['sbert'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.8711
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['infersent'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.4208
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['universal'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.7153
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['sim_cse'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.7973
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['seq_match'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.2698
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['jacc_chars'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.0522
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['levenshtein'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.1271
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['jacc_tokens'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.4014
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['ne'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.4549
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['main_syms'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.3228
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['words'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.5667
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['subjects'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.0608
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['ne_ne_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.4357
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['ne_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.4620
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['main_syms_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.3196
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['main_syms_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.3071
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['words_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.6454
+    #
+    # ufsg = UnsupervisedFeatureSetGenerator(['words_token_ratio'], 'TEST')
+    # ufsg.create_top_n_output_file(new_test_data, output, n=5)
+    # evaluate_CLEF(test_data_labels, output) #0.6630
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'pp1')
     # ufsg.create_top_n_output_file(old_test_data, top_5_sbert_infersent_sim_cse_words, n=5)
@@ -323,7 +629,8 @@ if __name__ == '__main__':
     test_data = 'data/pp_twitter_data/TEST/pp_test_TEST.tsv'
     output = 'data/output/output_2a.tsv'
 
-    classification_output = 'data/predictions/TEST/subtask2A_english.tsv'
+
+
 
 
     # fsg = FeatureSetGenerator(['sbert', 'infersent', 'universal', 'sim_cse', 'seq_match', 'levenshtein', 'jacc_chars',
@@ -338,9 +645,9 @@ if __name__ == '__main__':
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'universal', 'sim_cse'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)
 
-    output = 'data/output/subtask2A_english.tsv'
-
-    test_data_labels = 'data/TEST/CT2022-Task2A-EN-Test_Qrels_gold.tsv'
+    # output = 'data/output/subtask2A_english.tsv'
+    #
+    # test_data_labels = 'data/TEST/CT2022-Task2A-EN-Test_Qrels_gold.tsv'
 
     # ufsg = UnsupervisedFeatureSetGenerator(['sbert', 'infersent', 'sim_cse', 'words'], 'TEST')
     # ufsg.create_top_n_output_file(test_data, output, n=5)

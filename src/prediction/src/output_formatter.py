@@ -166,13 +166,15 @@ class OutputFormatter:
         df.to_csv(output_data, index=False, header=False, sep='\t')
 
     @classmethod
-    def format_binary_output(self, output, underlying_data, output_data, n=5):
+    def format_binary_output(self, complete_feature_set, output, underlying_data, output_data, n=5):
+        c_df = pd.read_pickle(complete_feature_set)
+        s1 = c_df['sbert'].to_numpy()
+        s2 = c_df['infersent'].to_numpy()
+        s4 = c_df['sim_cse'].to_numpy()
+        c_df['sim_score'] = np.mean(np.array([s1, s2, s4]), axis=0)
         df = output
         df = df.loc[df['rank'] == 1]
-        s1 = df['sbert'].to_numpy()
-        s2 = df['infersent'].to_numpy()
-        s4 = df['sim_cse'].to_numpy()
-        df['sim_score'] = np.mean(np.array([s1, s2, s4]), axis=0)
+        df = df.merge(c_df, how='left', on=['i_claim_id', 'ver_claim_id'])
         df['QO'] = 'QO'
         df['rank'] = '1'
         df['tag'] = 'SimBa'
@@ -183,7 +185,7 @@ class OutputFormatter:
         already_classified = df['i_claim_id'].tolist()
         for i_claim_id in list_of_iclaim_ids:
             if i_claim_id not in already_classified:
-                this_i_claim_df = output[output.i_claim_id == i_claim_id]
+                this_i_claim_df = c_df[c_df.i_claim_id == i_claim_id]
                 s1 = this_i_claim_df['sbert'].to_numpy()
                 s2 = this_i_claim_df['infersent'].to_numpy()
                 s4 = this_i_claim_df['sim_cse'].to_numpy()

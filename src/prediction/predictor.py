@@ -40,7 +40,7 @@ class Predictor:
         elif classification_mode == ClassificationMode.highest_n_se_sims.name:
             self.classification_mode = ClassificationMode.highest_n_se_sims.name
 
-    def train_and_predict(self, training_feature_set, test_feature_set, test_data, output_data, n=5):
+    def train_and_predict(self, complete_feature_set, training_feature_set, test_feature_set, test_data, output_data, n=5):
         if isinstance(training_feature_set, str):
             training_df = pd.read_pickle(training_feature_set)
         else:
@@ -80,9 +80,9 @@ class Predictor:
                 OutputFormatter.format_double_output(output_second_clasifier, test_data, output_data)
         elif isinstance(self.ranker, RankClassifier):
             if self.classification_mode == ClassificationMode.binary_classification.name:
-                model, selector = self.ranker.training_of_classifier(training_df)
-                output = self.ranker.predict_rankings(model, test_feature_set, selector)
-                OutputFormatter.format_binary_output(output, test_data, output_data)
+                model = self.ranker.training_of_classifier(training_df)
+                output = self.ranker.predict_rankings(model, test_feature_set)
+                OutputFormatter.format_binary_output(complete_feature_set, output, test_data, output_data)
             elif self.classification_mode == ClassificationMode.binary_proba.name:
                 model = self.ranker.training_of_prediction_classifier(training_df)
                 output = self.ranker.predict_probabilities(model, test_feature_set)

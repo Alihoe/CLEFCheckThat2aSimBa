@@ -41,19 +41,28 @@ class FeatureSelector:
     @staticmethod
     def feature_correlation(feature_set_path, output):
         data_set = pd.read_pickle(feature_set_path)
-        data_set.columns = ['i_claim_id', 'ver_claim_id', 'sbert', 'infersent', 'universal', 'sim_cse',
-                            'sequence_matcher', 'levenshtein', 'jacc_char', 'jacc_tok', 'ne', 'main_syns', 'words', 'subjects', 'score']
-        data_set['sequence_matcher'] = data_set['sequence_matcher'].astype('float')
+        print(data_set.columns)
+        data_set = data_set[['sbert', 'infersent', 'universal', 'sim_cse', 'levenshtein', 'jacc_chars',
+                               'jacc_tokens', 'seq_match', 'words', 'words_ratio', 'words_token_ratio', 'main_syms',
+                            'main_syms_ratio', 'main_syms_token_ratio',  'ne', 'ne_ne_ratio', 'ne_token_ratio']]
+        data_set['seq_match'] = data_set['seq_match'].astype('float')
         data_set['levenshtein'] = data_set['levenshtein'].astype('float')
-        data_set['jacc_char'] = data_set['jacc_char'].astype('float')
-        data_set['jacc_tok'] = data_set['jacc_tok'].astype('float')
+        data_set['jacc_chars'] = data_set['jacc_chars'].astype('float')
+        data_set['jacc_tokens'] = data_set['jacc_tokens'].astype('float')
         data_set['ne'] = data_set['ne'].astype('float')
-        data_set['main_syns'] = data_set['main_syns'].astype('float')
+        data_set['main_syms'] = data_set['main_syms'].astype('float')
         data_set['words'] = data_set['words'].astype('float')
-        data_set['subjects'] = data_set['subjects'].astype('float')
+        #data_set['subjects'] = data_set['subjects'].astype('float')
+        data_set['ne_ne_ratio'] = data_set['ne_ne_ratio'].astype('float')
+        data_set['ne_token_ratio'] = data_set['ne_token_ratio'].astype('float')
+        data_set['main_syms_ratio'] = data_set['main_syms_ratio'].astype('float')
+        data_set['main_syms_token_ratio'] = data_set['main_syms_token_ratio'].astype('float')
+        data_set['words_ratio'] = data_set['words_ratio'].astype('float')
+        data_set['words_token_ratio'] = data_set['words_token_ratio'].astype('float')
+
         cor = data_set.corr(method='spearman').round(decimals=2)
         print(cor)
-        cor.to_csv(output)
+        cor.to_csv(output, sep='&')
 
 
     # Mutual Information

@@ -9,6 +9,7 @@ from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.svm import LinearSVC
 
 
 class BalancingMethod(enum.Enum):
@@ -30,11 +31,12 @@ class MLModel(enum.Enum):
     mn_naive_bayes = 4
     dec_tree = 5
     linear_reg = 6
+    linear_svc = 7
 
 
 class RankClassifier:
 
-    def __init__(self, scaler_name='standard_scaler', model_name='log_reg', balancing_name=0, sampling_strat=0.1):
+    def __init__(self, scaler_name='standard_scaler', model_name='knn', balancing_name=0, sampling_strat=0.01):
         self.sampling_strat = sampling_strat
         if scaler_name == DatScaler.standard_scaler.name:
             self.scaler = StandardScaler()
@@ -64,6 +66,8 @@ class RankClassifier:
             self.model = tree.DecisionTreeClassifier()
         elif model_name == MLModel.linear_reg.name:
             self.model = LinearRegression()
+        elif model_name == MLModel.linear_svc.name:
+            self.model = LinearSVC(random_state=0, tol=1e-5)
         else:
             raise ValueError('Choose "log_reg", "svm", "knn", "mn_naive_bayes" or "dec_tree".')
 
@@ -97,13 +101,13 @@ class RankClassifier:
             x = self.scaler.fit_transform(x)
         if self.balancer:
             x, y = self.balancer.fit_resample(x, y)
-        selector = SelectFromModel(estimator=LogisticRegression()).fit(x, y)
-        print(selector.get_feature_names_out(x_col))
-        x = selector.transform(x)
+        # selector = SelectFromModel(estimator=LogisticRegression()).fit(x, y)
+        # print(selector.get_feature_names_out(x_col))
+        # x = selector.transform(x)
         self.model.fit(x, y)
-        return self.model, selector
+        return self.model #, selector
 
-    def predict_rankings(self, model, feature_set_without_rankings, selector):
+    def predict_rankings(self, model, feature_set_without_rankings): #, selector):
         if isinstance(feature_set_without_rankings, str):
             data_set = pd.read_pickle(feature_set_without_rankings)
         else:
@@ -128,7 +132,7 @@ class RankClassifier:
                 new_x[feature] = this_feature
         else:
             x = self.scaler.fit_transform(x)
-        x = selector.transform(x)
+        # x = selector.transform(x)
         prediction = model.predict(x)
         data_set['rank'] = prediction
         return data_set
