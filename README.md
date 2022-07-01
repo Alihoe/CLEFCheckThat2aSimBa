@@ -4,6 +4,7 @@ A more detailed README follows soon.
 
 Citation:
 
+```text
 @InProceedings{clef-checkthat:2022:task2:team_SimBa,
 author = {Hövelmeyer, Alica and Boland, Katarina and Dietze, Stefan},
 title = {{SimBa at CheckThat! 2022:} Lexical and Semantic Similarity Based Detection of Verified Claims in an Unsupervised and Supervised Way},
@@ -13,6 +14,7 @@ editor = {Faggioli, Guglielmo andd Ferro, Nicola and Hanbury, Allan and Potthast
 series = {CLEF~'2022},
 address = {Bologna, Italy},
 }
+```
 
 License:
 
